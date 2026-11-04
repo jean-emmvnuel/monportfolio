@@ -419,11 +419,20 @@
       { n: "TypeScript", d: "Typage strict partout", l: 78, i: img("typescript/typescript-original.svg"), lv: "solide" },
       { n: "Prisma ORM", d: "Schémas & migrations", l: 76, i: img("prisma/prisma-original.svg"), lv: "solide" },
       { n: "PostgreSQL", d: "Modélisation relationnelle", l: 75, i: img("postgresql/postgresql-original.svg"), lv: "solide" },
-      { n: "MySQL · Supabase", d: "SQL & BaaS", l: 68, i: img("mysql/mysql-original.svg"), lv: "solide" },
+      { n: "MySQL", d: "Bases relationnelles", l: 68, i: img("mysql/mysql-original.svg"), lv: "solide" },
+      { n: "Supabase", d: "Postgres hébergé, auth, stockage", l: 66, i: img("supabase/supabase-original.svg"), lv: "solide" },
       { n: "REST API", d: "Design, versioning, docs", l: 85, i: ico.api, lv: "avancé" },
-      { n: "Git & GitHub", d: "Workflow, branches, PR", l: 82, i: img("git/git-original.svg"), lv: "avancé" },
       { n: "Postman", d: "Tests & collections d'API", l: 80, i: img("postman/postman-original.svg"), lv: "avancé" },
-      { n: "React · React Native", d: "Côté client quand il faut", l: 70, i: img("react/react-original.svg"), lv: "solide" },
+      { n: "Git & GitHub", d: "Workflow, branches, PR", l: 82, i: img("git/git-original.svg"), lv: "avancé" },
+    ],
+    lang: [
+      { n: "JavaScript", d: "Langage de tous les jours", l: 82, i: img("javascript/javascript-original.svg"), lv: "avancé" },
+      { n: "HTML & CSS", d: "Intégration, responsive", l: 75, i: img("css3/css3-original.svg"), lv: "solide" },
+      { n: "React JS", d: "Interfaces web", l: 70, i: img("react/react-original.svg"), lv: "solide" },
+      { n: "React Native", d: "Applications mobiles", l: 65, i: img("react/react-original.svg"), lv: "solide" },
+      { n: "Python", d: "Scripts, automatisation", l: 40, i: img("python/python-original.svg"), lv: "bases" },
+      { n: "Java", d: "Programmation orientée objet", l: 40, i: img("java/java-original.svg"), lv: "bases" },
+      { n: "Arduino", d: "IoT, projet de pointage RFID", l: 55, i: img("arduino/arduino-original.svg"), lv: "pratiqué" },
     ],
     devops: [
       { n: "Docker", d: "Premières images, Compose", l: 40, i: img("docker/docker-original.svg"), lv: "en apprentissage", learn: true },
@@ -446,6 +455,7 @@
   };
   const SKILL_NOTES = {
     backend: "Ce que je <b>maîtrise et pratique</b> déjà, en projet comme en entreprise.",
+    lang: "Les autres langages et outils que j'utilise, du front-end à l'<b>IoT</b>.",
     devops: "Compétences <b>en cours d'acquisition</b> dans le cadre de ma reconversion. Je ne les ai pas encore utilisées en production.",
     sec: "La sécurité des API est <b>acquise</b>. Le reste est mon <b>objectif DevSecOps</b>, pas encore une compétence.",
   };
@@ -638,6 +648,30 @@
         gsap.from(it.querySelector(".t-dot"), { scale: 0, duration: 0.6, ease: "back.out(3)", scrollTrigger: { trigger: it, start: "top 80%" } });
       });
     });
+  })();
+
+  /* ---------------- CERTIFICATES ----------------
+     Ajouter un certificat = ajouter un objet ici :
+       { title: "Docker Foundations", issuer: "Organisme", date: "2026-12",
+         status: "obtenu" | "en cours", url: "https://lien-de-verification" (optionnel),
+         image: "assets/certs/mon-certificat.jpg" (optionnel) }
+     Tant que la liste est vide, la section affiche un message d'attente. */
+  const CERTS = [];
+  (function certs() {
+    const grid = $("#certGrid"), empty = $("#certEmpty");
+    if (!CERTS.length) { grid.hidden = true; empty.hidden = false; return; }
+    const fmt = (d) => { const [y, m] = d.split("-"); return m ? new Date(+y, +m - 1).toLocaleDateString("fr-FR", { month: "short", year: "numeric" }) : y; };
+    grid.innerHTML = CERTS.map((c) => `
+      <li class="cert${c.status === "en cours" ? " cert--progress" : ""}">
+        ${c.image ? `<img class="cert__img" src="${c.image}" alt="Certificat ${c.title}" loading="lazy" />` : `<div class="cert__img cert__img--ph" aria-hidden="true"><svg width="40" height="40"><use href="#i-logo"/></svg></div>`}
+        <div class="cert__body">
+          <span class="cert__status">${c.status === "en cours" ? "En cours" : "Obtenu"}</span>
+          <h3>${c.title}</h3>
+          <p>${c.issuer}${c.date ? ` · <time>${fmt(c.date)}</time>` : ""}</p>
+          ${c.url ? `<a href="${c.url}" target="_blank" rel="noopener" class="cert__link link-line">Voir le certificat <svg width="14" height="14" aria-hidden="true"><use href="#i-arrow"/></svg></a>` : ""}
+        </div>
+      </li>`).join("");
+    if (!reduceMotion) gsap.from(".cert", { y: 20, opacity: 0, duration: 0.7, stagger: 0.08, ease: "power2.out", scrollTrigger: { trigger: grid, start: "top 85%" } });
   })();
 
   /* ---------------- CONTACT ---------------- */
