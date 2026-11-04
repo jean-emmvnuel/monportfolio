@@ -11,7 +11,7 @@
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-  const DEV = "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/";
+  const DEV = "assets/tech/"; // icônes Devicon v2.16.0 hébergées localement (pas de dépendance au CDN)
 
   /* ---------------- TECH ICONS ----------------
      One icon per technology, wherever its name appears (tags, marquee). */
