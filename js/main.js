@@ -545,8 +545,8 @@
     {
       cat: "plateforme de cours · iua", title: "Cours Redis", url: "cours-redis-iua.netlify.app",
       live: "https://cours-redis-iua.netlify.app/", img: "",
-      desc: "Plateforme de cours sur Redis pour l'IUA, développée en React JS avec Supabase comme backend, déployée sur Netlify.",
-      tags: ["React JS", "Supabase", "Redis", "Netlify"], glow: "rgba(220,56,45,.3)",
+      desc: "Plateforme de cours sur Redis pour l'IUA, développée en React JS avec Supabase comme backend.",
+      tags: ["React JS", "Supabase"], glow: "rgba(220,56,45,.3)",
     },
     {
       cat: "santé · projet de fin de licence", title: "PharmaCare API", url: "api.pharmacare.ci/v1",
