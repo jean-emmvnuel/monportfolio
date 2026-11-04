@@ -716,7 +716,14 @@
          status: "obtenu" | "en cours", url: "https://lien-de-verification" (optionnel),
          image: "assets/certs/mon-certificat.jpg" (optionnel) }
      Tant que la liste est vide, la section affiche un message d'attente. */
-  const CERTS = [];
+  const CERTS = [
+    { title: "Les fondements de la méthode Scrum", issuer: "LinkedIn Learning", date: "2025-05", status: "obtenu",
+      skills: ["Scrum"], url: "assets/certs/scrum.pdf", image: "assets/certs/scrum.jpg" },
+    { title: "Préparer votre carrière dans le développement logiciel", issuer: "LinkedIn Learning", date: "2025-04", status: "obtenu",
+      skills: ["Développement logiciel", "Gestion de carrière"], url: "assets/certs/carriere-dev-logiciel.pdf", image: "assets/certs/carriere-dev-logiciel.jpg" },
+    { title: "Les prompts engineering avancés", issuer: "LinkedIn Learning", date: "2025-03", status: "obtenu",
+      skills: ["Prompt Engineering", "IA"], url: "assets/certs/prompt-engineering.pdf", image: "assets/certs/prompt-engineering.jpg" },
+  ];
   (function certs() {
     const grid = $("#certGrid"), empty = $("#certEmpty");
     if (!CERTS.length) { grid.hidden = true; empty.hidden = false; return; }
@@ -728,6 +735,7 @@
           <span class="cert__status">${c.status === "en cours" ? "En cours" : "Obtenu"}</span>
           <h3>${c.title}</h3>
           <p>${c.issuer}${c.date ? ` · <time>${fmt(c.date)}</time>` : ""}</p>
+          ${c.skills ? `<ul class="cert__skills">${c.skills.map((k) => `<li>${k}</li>`).join("")}</ul>` : ""}
           ${c.url ? `<a href="${c.url}" target="_blank" rel="noopener" class="cert__link link-line">Voir le certificat <svg width="14" height="14" aria-hidden="true"><use href="#i-arrow"/></svg></a>` : ""}
         </div>
       </li>`).join("");

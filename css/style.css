@@ -533,3 +533,7 @@ a.c-link:hover span { background-size: 100% 1.5px; }
   .bento { grid-template-columns: 1fr; grid-auto-rows: auto; }
   .tile--a, .tile--b, .tile--c, .tile--d, .tile--e, .tile--f { grid-column: auto; }
 }
+.cert__img { aspect-ratio: 1000 / 773; object-fit: cover; border-bottom: 1px solid var(--line); }
+.cert__skills { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .3rem; }
+.cert__skills li { font-size: .75rem; padding: .2rem .6rem; border-radius: 999px; background: var(--bg-2); color: var(--ink-2); }
+.certs__empty[hidden], .certs__grid[hidden] { display: none; }
