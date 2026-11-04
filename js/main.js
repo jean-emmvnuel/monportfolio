@@ -39,7 +39,7 @@
     java: "java/java-original.svg",
     jwt: "@jwt", "refresh tokens": "@key", rbac: "@lock", "rest api": "@api", "ci/cd": "@pipe", cloud: "@cloud",
     sast: "@shield", dast: "@shield", trivy: "@shield", secrets: "@key", owasp: "@bug", "sécurité": "@shield",
-    rfid: "@chip", "temps réel": "@bolt", perf: "@bolt", devsecops: "@shield",
+    rfid: "@chip", aes: "@lock", cryptographie: "@key", "temps réel": "@bolt", perf: "@bolt", devsecops: "@shield",
   };
   function techIcon(name) {
     const v = TECH[name.trim().toLowerCase()];
@@ -190,7 +190,7 @@
     tl.from(chars, { yPercent: 115, rotate: 6, duration: 1.2, stagger: 0.016 })
       .from(".hero .reveal-up", { y: 20, opacity: 0, duration: 0.9, stagger: 0.08 }, 0.45)
       .from(".portrait__frame", { clipPath: "inset(100% 0% 0% 0%)", duration: 1.5, ease: "expo.inOut" }, 0.05)
-      .from(".portrait__frame img", { scale: 1.25, duration: 2, transformOrigin: "50% 100%" }, 0.2)
+      .from(".portrait__frame img", { scale: 1.25, duration: 2, transformOrigin: "50% 30%" }, 0.2)
       .from(".portrait", { "--arch-o": 0, "--arch-shift": "28px", duration: 1.2 }, 0.9)
       .from(".portrait__cap > *", { y: 14, opacity: 0, duration: 0.8, stagger: 0.08 }, 1.05)
       .from(".nav", { y: -100, opacity: 0, duration: 1, clearProps: "transform,opacity" }, 0.3)
@@ -204,7 +204,7 @@
     const ox = gsap.quickTo(".portrait", "--arch-x", { duration: 1.2, ease: "power3" });
     $("#hero").addEventListener("mousemove", (e) => {
       const nx = e.clientX / innerWidth - 0.5;
-      ix(nx * -14);
+      ix(0);
       ox(nx * 10);
     });
   }
@@ -388,10 +388,10 @@
         scrollTrigger: { trigger: el, start: "top 85%" },
       });
     });
-    // about points: a short, quiet settle (small offset, no theatrics)
-    gsap.from(".point", {
-      y: 16, opacity: 0, duration: 0.8, stagger: 0.08, ease: "power2.out",
-      scrollTrigger: { trigger: ".about__points", start: "top 88%" },
+    // bento tiles: short staggered settle with a slight scale
+    gsap.from(".tile", {
+      y: 24, scale: .97, opacity: 0, duration: 0.8, stagger: 0.07, ease: "power3.out", clearProps: "transform",
+      scrollTrigger: { trigger: ".bento", start: "top 88%" },
     });
   }
 
@@ -537,15 +537,15 @@
      Sans `img`, la carte affiche « Aperçu à venir » jusqu'à ce que la capture soit ajoutée. */
   const PROJECTS = [
     {
-      cat: "projet web · react js", title: "AES", url: "aes-test.netlify.app",
+      cat: "cryptographie · chiffrement aes", title: "AES Chiffrement", url: "aes-test.netlify.app",
       live: "https://aes-test.netlify.app/", img: "",
-      desc: "Application web développée en React JS et déployée sur Netlify.",
-      tags: ["React JS", "Netlify"], glow: "rgba(255,91,31,.3)",
+      desc: "Site qui chiffre et déchiffre un message à partir d'une clé secrète, avec l'algorithme de chiffrement symétrique AES.",
+      tags: ["React JS", "AES", "Cryptographie"], glow: "rgba(255,91,31,.3)",
     },
     {
-      cat: "plateforme de cours · iua", title: "Cours Redis", url: "cours-redis-iua.netlify.app",
+      cat: "plateforme · département informatique iua", title: "Cours IUA", url: "cours-redis-iua.netlify.app",
       live: "https://cours-redis-iua.netlify.app/", img: "",
-      desc: "Plateforme de cours sur Redis pour l'IUA, développée en React JS avec Supabase comme backend.",
+      desc: "Plateforme qui centralise les PDF de cours du département informatique de l'IUA, classés par niveau et par filière.",
       tags: ["React JS", "Supabase"], glow: "rgba(220,56,45,.3)",
     },
     {
