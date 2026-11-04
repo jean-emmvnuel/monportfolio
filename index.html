@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Jean Emmanuel Ahossi · Développeur backend, futur DevSecOps</title>
+  <meta name="description" content="Jean Emmanuel Ahossi, développeur backend Node.js et NestJS à Abidjan, en route vers le DevOps et le DevSecOps." />
+  <meta name="author" content="Jean Emmanuel Ahossi" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Jean Emmanuel Ahossi · Développeur backend, futur DevSecOps" />
+  <meta property="og:description" content="Développeur backend Node.js et NestJS à Abidjan, en reconversion vers le DevOps et le DevSecOps." />
+  <meta property="og:image" content="assets/icons/icon-512.png" />
+
+  <!-- Icons / PWA -->
+  <link rel="icon" href="assets/icons/favicon.ico" sizes="48x48" />
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+  <link rel="manifest" href="assets/icons/site.webmanifest" />
+  <meta name="theme-color" content="#F4EFE6" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0E0D0C" media="(prefers-color-scheme: dark)" />
+  <meta name="apple-mobile-web-app-title" content="J. E. Ahossi" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="12" cy="12" r="3.2" fill="currentColor"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 15V6a2 2 0 0 1 2-2h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path d="M7.9 20.1A9 9 0 1 0 3.9 16L2.5 21.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M15.6 13.9c-.3-.2-1.6-.8-1.9-.9-.3-.1-.4-.1-.6.1l-.8 1c-.2.2-.3.2-.6.1a6.3 6.3 0 0 1-3-2.6c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.5l-.9-2c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3 1 2.6 1.1 2.8.1.2 1.9 2.9 4.6 4 1.7.7 2.3.8 3.2.6.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3Z" fill="currentColor"/></symbol>
+    <symbol id="i-gh" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5Z"/></symbol>
+    <symbol id="i-logo" viewBox="0 0 256 256"><path fill="currentColor" d="M76 38h36v118a62 62 0 0 1-62 62h-8v-36h8a26 26 0 0 0 26-26z"/><rect fill="currentColor" x="128" y="38" width="84" height="34" rx="4"/><rect fill="#FF5B1F" x="128" y="101" width="62" height="34" rx="4"/><rect fill="currentColor" x="128" y="164" width="84" height="34" rx="4"/></symbol>
+  </svg>
+
+  <!-- Preloader -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__term">
+      <div class="loader__lines" id="loaderLines"></div>
+      <div class="loader__bar"><span id="loaderBar"></span></div>
+      <div class="loader__pct"><span id="loaderPct">0</span>%</div>
+    </div>
+    <div class="loader__curtain"></div>
+  </div>
+
+  <!-- Cursor -->
+  <div class="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"><span class="cursor__label"></span></div>
+  </div>
+
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+  <!-- Nav -->
+  <header class="nav" id="nav">
+    <a href="#hero" class="nav__logo" aria-label="Jean Emmanuel Ahossi, retour en haut">
+      <svg class="nav__logo-mark" width="34" height="34" aria-hidden="true"><use href="#i-logo"/></svg>
+      <span class="nav__logo-text">Jean Emmanuel <b>Ahossi</b></span>
+    </a>
+    <nav class="nav__links" aria-label="Navigation principale">
+      <a href="#about" data-scramble>À propos</a>
+      <a href="#pipeline" data-scramble>Trajectoire</a>
+      <a href="#skills" data-scramble>Stack</a>
+      <a href="#projects" data-scramble>Projets</a>
+      <a href="#journey" data-scramble>Parcours</a>
+    </nav>
+    <div class="nav__actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Basculer entre thème clair et sombre">
+        <svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <a href="#contact" class="btn btn--dark btn--sm magnetic"><span>Me contacter</span></a>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="menu" id="menu" aria-hidden="true">
+    <nav class="menu__links" aria-label="Menu mobile">
+      <a href="#about">À propos</a>
+      <a href="#pipeline">Trajectoire</a>
+      <a href="#skills">Stack</a>
+      <a href="#projects">Projets</a>
+      <a href="#journey">Parcours</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="menu__foot">
+      <a href="https://wa.me/2250704526437" target="_blank" rel="noopener" class="menu__wa"><svg width="20" height="20" aria-hidden="true"><use href="#i-wa"/></svg>07 04 52 64 37</a>
+      <span>emmanuelahossi667@gmail.com</span>
+    </div>
+  </div>
+
+  <main id="smooth">
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <canvas class="hero__canvas" id="netCanvas" aria-hidden="true"></canvas>
+
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <h1 class="hero__title" data-split>
+            Je construis des <em>back-ends</em> solides. J'apprends à les <em class="accent">déployer</em> et à les <em>sécuriser.</em>
+          </h1>
+
+          <p class="hero__sub reveal-up">
+            Développeur backend <b>Node.js</b> et <b>NestJS</b> à Abidjan. Mon métier aujourd'hui, c'est concevoir des API sécurisées. Je suis <b>en reconversion vers le DevOps</b>, puis le DevSecOps&nbsp;: je me forme aux conteneurs, aux pipelines CI/CD et au cloud.
+          </p>
+
+          <div class="hero__ctas reveal-up">
+            <a href="#projects" class="btn btn--dark magnetic">
+              <span>Voir mes projets</span>
+              <i class="btn__ico"><svg width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></i>
+            </a>
+            <a href="https://wa.me/2250704526437" target="_blank" rel="noopener" class="btn btn--ghost magnetic">
+              <svg width="20" height="20" aria-hidden="true"><use href="#i-wa"/></svg>
+              <span>Écrire sur WhatsApp</span>
+            </a>
+          </div>
+
+          <a href="https://github.com/jean-emmvnuel" target="_blank" rel="noopener" class="hero__gh reveal-up link-line">
+            <svg width="18" height="18" aria-hidden="true"><use href="#i-gh"/></svg>github.com/jean-emmvnuel
+          </a>
+        </div>
+
+        <figure class="portrait" id="portrait">
+          <div class="portrait__frame">
+            <img src="assets/profile.jpg" alt="Portrait de Jean Emmanuel Ahossi" width="600" height="600" fetchpriority="high" />
+          </div>
+          <figcaption class="portrait__cap">
+            <span class="portrait__name">Jean Emmanuel Ahossi</span>
+            <span class="portrait__meta"><span class="pulse" aria-hidden="true"></span>Ouvert aux opportunités · télétravail ou présentiel</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track" id="marquee">
+        <span>Node.js</span><i></i><span>NestJS</span><i></i><span>Express</span><i></i><span>TypeScript</span><i></i><span>Prisma</span><i></i><span>PostgreSQL</span><i></i><span>MySQL</span><i></i><span>JWT</span><i></i><span>REST API</span><i></i><span>React</span><i></i>
+      </div>
+    </div>
+
+    <!-- About -->
+    <section class="about" id="about" aria-label="À propos">
+      <div class="container">
+        <p class="about__text" id="aboutText">
+          Je suis développeur backend basé à Abidjan. Je conçois des API REST sécurisées avec NestJS et Node.js,
+          je modélise des bases PostgreSQL avec Prisma, et j'aime quand le code est propre, testé et déployable.
+          Aujourd'hui je me reconvertis vers le DevOps&nbsp;: je découvre les conteneurs, les pipelines CI/CD et le cloud,
+          sans prétendre les maîtriser. Mon objectif à terme&nbsp;: le DevSecOps, faire de la sécurité une étape du pipeline.
+        </p>
+
+        <dl class="about__points">
+          <div class="point">
+            <dt>Backend · mon métier</dt>
+            <dd>API REST, authentification JWT, contrôle d'accès par rôles, ORM Prisma. Ce que je pratique déjà en projet et en entreprise.</dd>
+          </div>
+          <div class="point">
+            <dt>DevOps · en apprentissage</dt>
+            <dd>Git au quotidien, bases de Docker et de Linux. CI/CD et cloud sont en cours d'apprentissage, notamment via mon Master.</dd>
+          </div>
+          <div class="point">
+            <dt>DevSecOps · l'objectif</dt>
+            <dd>Passionné de cybersécurité. Je sécurise déjà mes API&nbsp;; intégrer la sécurité dans tout le pipeline, c'est ce que je veux apprendre.</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- Pipeline (horizontal) -->
+    <section class="pipeline" id="pipeline">
+      <div class="pipeline__head container">
+        <h2 class="h2" data-split>Ma <em>reconversion</em> en quatre étapes</h2>
+        <p class="pipeline__intro">Seule la première étape est acquise. Les suivantes sont ce que j'apprends et ce que je vise&nbsp;; les extraits de code montrent ce vers quoi je travaille, pas une expérience en production.</p>
+        <div class="pipeline__track" aria-hidden="true">
+          <div class="pipeline__line"><span id="pipeFill"></span></div>
+          <div class="pipeline__stages">
+            <span class="stage"><i></i>code</span>
+            <span class="stage"><i></i>build</span>
+            <span class="stage"><i></i>ship</span>
+            <span class="stage"><i></i>secure</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pipeline__wrap">
+        <div class="pipeline__panels" id="pipePanels">
+          <article class="panel">
+            <div class="panel__num" aria-hidden="true">01</div>
+            <div class="panel__body">
+              <span class="badge badge--ok"><svg width="13" height="13" aria-hidden="true"><use href="#i-check"/></svg>Acquis</span>
+              <h3>Backend<br/><em>Developer</em></h3>
+              <p>Mon métier actuel. Je conçois des API REST robustes, sécurisées et maintenables avec Node.js, Express et NestJS.</p>
+              <ul class="tags"><li>NestJS</li><li>Express</li><li>Prisma</li><li>PostgreSQL</li><li>JWT</li></ul>
+            </div>
+            <pre class="panel__code"><code><span class="c">// guard RBAC</span>
+<span class="k">@UseGuards</span>(JwtAuthGuard, RolesGuard)
+<span class="k">@Roles</span>(<span class="s">'admin'</span>, <span class="s">'pharmacien'</span>)
+<span class="k">@Get</span>(<span class="s">'medicaments'</span>)
+findAll() {
+  <span class="k">return</span> <span class="v">this</span>.service.findAll();
+}</code></pre>
+          </article>
+
+          <article class="panel">
+            <div class="panel__num" aria-hidden="true">02</div>
+            <div class="panel__body">
+              <span class="badge badge--run"><i class="spin" aria-hidden="true"></i>En cours</span>
+              <h3>Build &amp;<br/><em>Containerize</em></h3>
+              <p>J'apprends à empaqueter mes API dans des conteneurs reproductibles. J'ai les bases de Docker et de Linux, je pratique sur mes projets personnels.</p>
+              <ul class="tags"><li>Docker</li><li>Compose</li><li>Linux</li><li>Git</li></ul>
+            </div>
+            <pre class="panel__code"><code><span class="k">FROM</span> node:20-alpine <span class="k">AS</span> build
+<span class="k">WORKDIR</span> /app
+<span class="k">COPY</span> package*.json ./
+<span class="k">RUN</span> npm ci
+<span class="k">COPY</span> . .
+<span class="k">RUN</span> npm run build
+<span class="k">USER</span> <span class="s">node</span></code></pre>
+          </article>
+
+          <article class="panel">
+            <div class="panel__num" aria-hidden="true">03</div>
+            <div class="panel__body">
+              <span class="badge badge--queue"><svg width="13" height="13" aria-hidden="true"><use href="#i-clock"/></svg>Prochaine étape</span>
+              <h3>DevOps<br/><em>Engineer</em></h3>
+              <p>Pas encore acquis. Automatiser l'intégration et le déploiement continus, piloter l'infrastructure dans le cloud&nbsp;: c'est ce que je vais apprendre pendant mon Master Cloud à l'ESATIC.</p>
+              <ul class="tags"><li>CI/CD</li><li>GitHub Actions</li><li>Cloud</li><li>IaC</li></ul>
+            </div>
+            <pre class="panel__code"><code><span class="k">on</span>: [push]
+<span class="k">jobs</span>:
+  <span class="v">deploy</span>:
+    <span class="k">runs-on</span>: ubuntu-latest
+    <span class="k">steps</span>:
+      - <span class="k">uses</span>: actions/checkout@v4
+      - <span class="k">run</span>: docker build -t api .
+      - <span class="k">run</span>: ./deploy.sh</code></pre>
+          </article>
+
+          <article class="panel panel--sec">
+            <div class="panel__num" aria-hidden="true">04</div>
+            <div class="panel__body">
+              <span class="badge badge--target"><svg width="13" height="13" aria-hidden="true"><use href="#i-target"/></svg>Objectif</span>
+              <h3>DevSec<br/><em>Ops</em></h3>
+              <p>Ma destination. Intégrer la sécurité à chaque étape du pipeline&nbsp;: analyse du code, scan des images, gestion des secrets. Un objectif, pas encore une compétence.</p>
+              <ul class="tags"><li>SAST</li><li>DAST</li><li>Trivy</li><li>Secrets</li><li>OWASP</li></ul>
+            </div>
+            <pre class="panel__code"><code>$ trivy image api:latest
+<span class="c">Total: 0 (CRITICAL: 0, HIGH: 0)</span>
+$ gitleaks detect
+<span class="ok">no leaks found</span>
+$ <span class="blink">▍</span></code></pre>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="skills" id="skills">
+      <div class="container">
+        <div class="skills__head">
+          <h2 class="h2" data-split>Les outils de mon <em>atelier</em></h2>
+          <div class="tabs" role="tablist" id="skillTabs" aria-label="Catégories de compétences">
+            <span class="tabs__pill" id="tabPill" aria-hidden="true"></span>
+            <button role="tab" aria-selected="true" aria-controls="skillGrid" data-tab="backend" class="active">Backend</button>
+            <button role="tab" aria-selected="false" aria-controls="skillGrid" data-tab="devops">DevOps</button>
+            <button role="tab" aria-selected="false" aria-controls="skillGrid" data-tab="sec">Sécurité</button>
+          </div>
+        </div>
+
+        <p class="skills__note" id="skillNote"></p>
+        <ul class="skills__list" id="skillGrid" role="tabpanel" aria-live="polite"></ul>
+
+        <div class="skills__extra">
+          <p><span>Langues</span>Français courant, anglais A2 en progression.</p>
+          <p><span>Façon de travailler</span>Veille technologique, autonomie, travail en équipe, apprentissage rapide.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="projects" id="projects">
+      <div class="container projects__grid">
+        <div class="projects__intro">
+          <h2 class="h2" data-split>Ce que j'ai <em>livré</em></h2>
+          <p>Des systèmes backend réels, dans la santé, l'IoT et l'authentification. Chaque projet est une API pensée pour durer.</p>
+
+          <div class="projects__meta">
+            <div class="projects__counter"><span id="projIdx">01</span> / <span id="projTotal">03</span></div>
+            <div class="projects__nav">
+              <button class="round-btn magnetic" id="projPrev" aria-label="Projet précédent"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+              <button class="round-btn round-btn--accent magnetic" id="projNext" aria-label="Projet suivant"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="stack" id="projStack" data-cursor-label="glisser"></div>
+      </div>
+    </section>
+
+    <!-- Journey -->
+    <section class="journey" id="journey">
+      <div class="container">
+        <h2 class="h2 h2--center" data-split>Expériences &amp; <em>formations</em></h2>
+
+        <div class="journey__cols">
+          <div class="timeline" data-timeline>
+            <h3 class="timeline__title">Expérience</h3>
+            <svg class="timeline__line" preserveAspectRatio="none" viewBox="0 0 2 100" aria-hidden="true"><line x1="1" y1="0" x2="1" y2="100" /></svg>
+            <article class="t-item">
+              <span class="t-dot" aria-hidden="true"></span>
+              <div class="t-card">
+                <div class="t-head"><h4>Développeur Web &amp; Mobile</h4><time>avr. à juin 2026</time></div>
+                <p class="t-org">Projet de fin de licence, Abidjan</p>
+                <p>API REST sécurisées avec NestJS pour la gestion des pharmacies, des médicaments et des utilisateurs. Authentification JWT et contrôle d'accès par rôles.</p>
+              </div>
+            </article>
+            <article class="t-item">
+              <span class="t-dot" aria-hidden="true"></span>
+              <div class="t-card">
+                <div class="t-head"><h4>Développeur Backend</h4><time>déc. 2025 à avr. 2026</time></div>
+                <p class="t-org">Djoumaf Côte d'Ivoire, Abidjan</p>
+                <p>Systèmes d'authentification robustes pour renforcer la sécurité et le contrôle d'accès. Optimisation des échanges entre front et back pour réduire la latence.</p>
+              </div>
+            </article>
+            <article class="t-item">
+              <span class="t-dot" aria-hidden="true"></span>
+              <div class="t-card">
+                <div class="t-head"><h4>Développeur Backend</h4><time>nov. 2025</time></div>
+                <p class="t-org">Club Robotique, département informatique de l'IUA</p>
+                <p>API REST sécurisée pour un système de pointage RFID en temps réel, architecture évolutive intégrée à des équipements Arduino, traçabilité des opérations.</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="timeline" data-timeline>
+            <h3 class="timeline__title">Formation</h3>
+            <svg class="timeline__line" preserveAspectRatio="none" viewBox="0 0 2 100" aria-hidden="true"><line x1="1" y1="0" x2="1" y2="100" /></svg>
+            <article class="t-item">
+              <span class="t-dot t-dot--accent" aria-hidden="true"></span>
+              <div class="t-card t-card--hl">
+                <div class="t-head"><h4>Master Mobiquité, Big Data &amp; Cloud</h4><time>2026 à 2028</time></div>
+                <p class="t-org">ESATIC, Abidjan</p>
+                <p>Cloud, systèmes distribués et données à grande échelle. Le socle de ma transition vers le DevOps.</p>
+              </div>
+            </article>
+            <article class="t-item">
+              <span class="t-dot" aria-hidden="true"></span>
+              <div class="t-card">
+                <div class="t-head"><h4>Licence Génie Informatique</h4><time>2023 à 2026</time></div>
+                <p class="t-org">Institut Universitaire d'Abidjan</p>
+                <p><span class="pill-hl">Mention Très Bien</span></p>
+              </div>
+            </article>
+            <article class="t-item">
+              <span class="t-dot" aria-hidden="true"></span>
+              <div class="t-card">
+                <div class="t-head"><h4>Baccalauréat</h4><time>2020 à 2023</time></div>
+                <p class="t-org">Lycée Classique d'Abidjan</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+      <div class="container contact__inner">
+        <h2 class="contact__title" data-split>Un projet <em>backend</em> ou une première mission <em>DevOps</em>&nbsp;?</h2>
+        <p class="contact__sub">Je suis opérationnel en backend et je cherche à mettre le DevOps en pratique&nbsp;: stage, alternance, freelance ou simple échange. Le plus rapide, c'est WhatsApp.</p>
+
+        <div class="contact__actions">
+          <a href="https://wa.me/2250704526437" target="_blank" rel="noopener" class="big-btn magnetic" aria-label="Écrire sur WhatsApp au 07 04 52 64 37">
+            <span class="big-btn__inner">
+              <svg width="34" height="34" aria-hidden="true"><use href="#i-wa"/></svg>
+              <span>WhatsApp</span>
+            </span>
+          </a>
+          <ul class="contact__links">
+            <li>
+              <a href="https://wa.me/2250704526437" target="_blank" rel="noopener" class="c-link">
+                <svg width="20" height="20" aria-hidden="true"><use href="#i-wa"/></svg>
+                <span>+225 07 04 52 64 37</span>
+              </a>
+            </li>
+            <li class="c-row">
+              <a href="mailto:emmanuelahossi667@gmail.com" class="c-link">
+                <svg width="20" height="20" aria-hidden="true"><use href="#i-mail"/></svg>
+                <span id="copyText">emmanuelahossi667@gmail.com</span>
+              </a>
+              <button class="copy" id="copyMail" aria-label="Copier l'adresse e-mail">
+                <svg width="16" height="16" aria-hidden="true"><use href="#i-copy"/></svg>
+              </button>
+            </li>
+            <li>
+              <a href="https://github.com/jean-emmvnuel" target="_blank" rel="noopener" class="c-link">
+                <svg width="20" height="20" aria-hidden="true"><use href="#i-gh"/></svg>
+                <span>github.com/jean-emmvnuel</span>
+              </a>
+            </li>
+            <li class="c-link c-link--static">
+              <svg width="20" height="20" aria-hidden="true"><use href="#i-pin"/></svg>
+              <span>Abidjan, Côte d'Ivoire</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a href="#hero" class="footer__brand" aria-label="Retour en haut">
+        <svg width="28" height="28" aria-hidden="true"><use href="#i-logo"/></svg>
+        <span>© <span id="year"></span> Jean Emmanuel Ahossi</span>
+      </a>
+      <p>Conçu et développé à Abidjan.</p>
+      <a href="#hero" class="link-line footer__top">Retour en haut <svg width="14" height="14" aria-hidden="true"><use href="#i-up"/></svg></a>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/2250704526437" target="_blank" rel="noopener" class="wa-float" id="waFloat" aria-label="Écrire sur WhatsApp">
+    <svg width="26" height="26" aria-hidden="true"><use href="#i-wa"/></svg>
+  </a>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
