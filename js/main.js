@@ -15,7 +15,7 @@
 
   /* ---------------- TECH ICONS ----------------
      One icon per technology, wherever its name appears (tags, marquee). */
-  const SV = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="#C83E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+  const SV = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="#7A0BBE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
   const GLYPH = {
     shield: SV('<path d="M12 2 4 5v6c0 5 3.4 9.5 8 11 4.6-1.5 8-6 8-11V5l-8-3Z"/><path d="m9 12 2 2 4-4"/>'),
     key: SV('<circle cx="7.5" cy="15.5" r="4.5"/><path d="m10.7 12.3 9.8-9.8M17 6l3 3"/>'),
@@ -255,12 +255,12 @@
         }
         const p = nodes[i], dm = Math.hypot(mouse.x - p.x, mouse.y - p.y);
         if (dm < 160) {
-          ctx.strokeStyle = `rgba(255,91,31,${(1 - dm / 160) * 0.5})`;
+          ctx.strokeStyle = `rgba(152, 16, 230,${(1 - dm / 160) * 0.5})`;
           ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
         }
       }
       for (const p of nodes) {
-        ctx.fillStyle = p.hot ? "rgba(255,91,31,.9)" : `rgba(${lineRGB},.35)`;
+        ctx.fillStyle = p.hot ? "rgba(152, 16, 230,.9)" : `rgba(${lineRGB},.35)`;
         ctx.beginPath(); ctx.arc(p.x, p.y, p.hot ? p.r + 1 : p.r, 0, Math.PI * 2); ctx.fill();
       }
     };
@@ -540,7 +540,7 @@
       cat: "cryptographie · chiffrement aes", title: "AES Chiffrement", url: "aes-test.netlify.app",
       live: "https://aes-test.netlify.app/", img: "",
       desc: "Site qui chiffre et déchiffre un message à partir d'une clé secrète, avec l'algorithme de chiffrement symétrique AES.",
-      tags: ["React JS", "AES", "Cryptographie"], glow: "rgba(255,91,31,.3)",
+      tags: ["React JS", "AES", "Cryptographie"], glow: "rgba(152, 16, 230,.3)",
     },
     {
       cat: "plateforme · département informatique iua", title: "Cours IUA", url: "cours-redis-iua.netlify.app",
@@ -551,7 +551,7 @@
     {
       cat: "santé · projet de fin de licence", title: "PharmaCare API", url: "api.pharmacare.ci/v1",
       desc: "API REST sécurisée pour la gestion des pharmacies, des médicaments et des utilisateurs. Authentification JWT et contrôle d'accès basé sur les rôles.",
-      tags: ["NestJS", "Prisma", "PostgreSQL", "JWT", "RBAC"], glow: "rgba(255,91,31,.3)",
+      tags: ["NestJS", "Prisma", "PostgreSQL", "JWT", "RBAC"], glow: "rgba(152, 16, 230,.3)",
       kpi: "RBAC", kpiLabel: "3 rôles · guards NestJS",
       req: `<span class="m">GET</span> <span class="u">/v1/medicaments</span>
 <span class="h">Authorization: Bearer eyJhbGci…</span>
