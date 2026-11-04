@@ -483,3 +483,19 @@ a.c-link:hover span { background-size: 100% 1.5px; }
   .tabs { display: flex; width: 100%; }
   .tabs button { flex: 1; padding: .6rem .3rem; font-size: .8rem; }
 }
+
+/* project cards with a live-site screenshot */
+.p-card__shot { flex: 1; position: relative; overflow: hidden; background: #0E0D0C; min-height: 0; }
+.p-card__shot img { width: 100%; height: 100%; object-fit: cover; object-position: top center; pointer-events: none; }
+.p-card__shot-ph { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: .8rem; color: #ADA599; font-size: .9rem; background: radial-gradient(circle at 80% 0%, var(--glow, rgba(255,91,31,.25)), transparent 60%); }
+.p-card__shot-ph svg { color: var(--on-dark); }
+.p-card__visit { display: inline-flex; align-items: center; gap: .4rem; margin-top: .9rem; min-height: 44px; font-weight: 600; font-size: .92rem; color: #FF8A4C; }
+.p-card__visit:hover { color: #fff; }
+
+/* tech icons in tags and marquee */
+.t-ico { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: #fff; flex-shrink: 0; }
+.t-ico img, .t-ico svg { width: 13px; height: 13px; }
+.tags li { display: inline-flex; align-items: center; gap: .45rem; padding-left: .4rem; }
+.marquee__track span { display: inline-flex; align-items: center; gap: .55em; }
+.marquee__track .t-ico { width: 1.05em; height: 1.05em; }
+.marquee__track .t-ico img, .marquee__track .t-ico svg { width: .66em; height: .66em; }

@@ -13,6 +13,44 @@
   const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   const DEV = "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/";
 
+  /* ---------------- TECH ICONS ----------------
+     One icon per technology, wherever its name appears (tags, marquee). */
+  const SV = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="#C83E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+  const GLYPH = {
+    shield: SV('<path d="M12 2 4 5v6c0 5 3.4 9.5 8 11 4.6-1.5 8-6 8-11V5l-8-3Z"/><path d="m9 12 2 2 4-4"/>'),
+    key: SV('<circle cx="7.5" cy="15.5" r="4.5"/><path d="m10.7 12.3 9.8-9.8M17 6l3 3"/>'),
+    lock: SV('<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>'),
+    bug: SV('<rect x="7" y="7" width="10" height="13" rx="5"/><path d="M12 7V4M3 13h4M17 13h4M4 19l3-2M20 19l-3-2"/>'),
+    pipe: SV('<circle cx="5" cy="12" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M7.5 12h4l5-6M11.5 12l5 6"/>'),
+    cloud: SV('<path d="M17.5 19a4.5 4.5 0 1 0-1.4-8.8A6 6 0 0 0 4.5 12 3.5 3.5 0 0 0 6 19h11.5Z"/>'),
+    api: SV('<path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/>'),
+    jwt: SV('<path d="M12 2v6M12 16v6M2 12h6M16 12h6M5 5l4 4M15 15l4 4M19 5l-4 4M9 15l-4 4"/>'),
+    chip: SV('<rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/>'),
+    bolt: SV('<path d="M13 2 4 14h7l-1 8 9-12h-7Z"/>'),
+  };
+  const TECH = {
+    "node.js": "nodejs/nodejs-original.svg", nestjs: "nestjs/nestjs-original.svg", express: "express/express-original.svg",
+    typescript: "typescript/typescript-original.svg", javascript: "javascript/javascript-original.svg",
+    prisma: "prisma/prisma-original.svg", postgresql: "postgresql/postgresql-original.svg", mysql: "mysql/mysql-original.svg",
+    supabase: "supabase/supabase-original.svg", "react js": "react/react-original.svg", react: "react/react-original.svg",
+    arduino: "arduino/arduino-original.svg", docker: "docker/docker-original.svg", compose: "docker/docker-original.svg",
+    linux: "linux/linux-original.svg", git: "git/git-original.svg", "github actions": "githubactions/githubactions-original.svg",
+    iac: "terraform/terraform-original.svg", redis: "redis/redis-original.svg", netlify: "netlify/netlify-original.svg", python: "python/python-original.svg",
+    java: "java/java-original.svg",
+    jwt: "@jwt", "refresh tokens": "@key", rbac: "@lock", "rest api": "@api", "ci/cd": "@pipe", cloud: "@cloud",
+    sast: "@shield", dast: "@shield", trivy: "@shield", secrets: "@key", owasp: "@bug", "sécurité": "@shield",
+    rfid: "@chip", "temps réel": "@bolt", perf: "@bolt", devsecops: "@shield",
+  };
+  function techIcon(name) {
+    const v = TECH[name.trim().toLowerCase()];
+    if (!v) return "";
+    return `<span class="t-ico" aria-hidden="true">${v[0] === "@" ? GLYPH[v.slice(1)] : `<img src="${DEV}${v}" alt="" width="16" height="16" loading="lazy"/>`}</span>`;
+  }
+  function decorateTech(els) {
+    els.forEach((el) => { if (!el.querySelector(".t-ico")) el.insertAdjacentHTML("afterbegin", techIcon(el.textContent)); });
+  }
+  decorateTech($$(".tags li, .marquee__track span"));
+
   document.body.classList.add("is-loading");
   $("#year").textContent = new Date().getFullYear();
 
@@ -495,7 +533,21 @@
   })();
 
   /* ---------------- PROJECTS — stacked cards ---------------- */
+  /* Projet en ligne : { live: "https://…", img: "assets/projects/xxx.png" }
+     Sans `img`, la carte affiche « Aperçu à venir » jusqu'à ce que la capture soit ajoutée. */
   const PROJECTS = [
+    {
+      cat: "projet web · react js", title: "AES", url: "aes-test.netlify.app",
+      live: "https://aes-test.netlify.app/", img: "",
+      desc: "Application web développée en React JS et déployée sur Netlify.",
+      tags: ["React JS", "Netlify"], glow: "rgba(255,91,31,.3)",
+    },
+    {
+      cat: "plateforme de cours · iua", title: "Cours Redis", url: "cours-redis-iua.netlify.app",
+      live: "https://cours-redis-iua.netlify.app/", img: "",
+      desc: "Plateforme de cours sur Redis pour l'IUA, développée en React JS avec Supabase comme backend, déployée sur Netlify.",
+      tags: ["React JS", "Supabase", "Redis", "Netlify"], glow: "rgba(220,56,45,.3)",
+    },
     {
       cat: "santé · projet de fin de licence", title: "PharmaCare API", url: "api.pharmacare.ci/v1",
       desc: "API REST sécurisée pour la gestion des pharmacies, des médicaments et des utilisateurs. Authentification JWT et contrôle d'accès basé sur les rôles.",
@@ -547,18 +599,26 @@
     stack.innerHTML = PROJECTS.map((p) => `
       <article class="p-card" style="--glow:${p.glow}">
         <div class="p-card__bar"><span class="dots"><i></i><i></i><i></i></span><span class="p-card__url mono">${p.url}</span></div>
+        ${p.live ? `
+        <div class="p-card__shot">
+          ${p.img
+            ? `<img src="${p.img}" alt="Capture du site ${p.title}" loading="lazy" draggable="false" />`
+            : `<div class="p-card__shot-ph"><svg width="44" height="44" aria-hidden="true"><use href="#i-logo"/></svg><span>Aperçu à venir</span></div>`}
+        </div>` : `
         <div class="p-card__screen">
           <pre class="req">${p.req}</pre>
           <div class="p-card__big"><span></span><div class="p-card__kpi">${p.kpi}<small>${p.kpiLabel}</small></div></div>
-        </div>
+        </div>`}
         <div class="p-card__info">
           <span class="p-card__cat mono">${p.cat}</span>
           <h3>${p.title}</h3>
           <p>${p.desc}</p>
           <ul class="tags">${p.tags.map((t) => `<li>${t}</li>`).join("")}</ul>
+          ${p.live ? `<a class="p-card__visit" href="${p.live}" target="_blank" rel="noopener">Voir le site en ligne <svg width="14" height="14" aria-hidden="true"><use href="#i-arrow"/></svg></a>` : ""}
         </div>
       </article>`).join("");
 
+    decorateTech($$(".tags li", stack));
     let cards = $$(".p-card", stack);
     let order = cards.map((_, i) => i); // order[0] = front card index
     let animating = false;
@@ -607,7 +667,7 @@
 
     // drag / swipe
     let startX = 0, dragging = false, dx = 0;
-    stack.addEventListener("pointerdown", (e) => { if (animating) return; dragging = true; startX = e.clientX; dx = 0; stack.setPointerCapture(e.pointerId); });
+    stack.addEventListener("pointerdown", (e) => { if (animating || e.target.closest("a")) return; dragging = true; startX = e.clientX; dx = 0; stack.setPointerCapture(e.pointerId); });
     stack.addEventListener("pointermove", (e) => {
       if (!dragging) return;
       dx = e.clientX - startX;
