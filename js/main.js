@@ -538,7 +538,7 @@
   const PROJECTS = [
     {
       cat: "réseau social · humour ivoirien", title: "Je Bade", url: "jebade.vercel.app",
-      live: "https://jebade.vercel.app/", img: "assets/projects/jebade.jpg",
+      live: "https://jebade.vercel.app/", img: "assets/projects/jebade.jpg", wip: true,
       desc: "Réseau social installable (PWA) pour raconter ses galères du quotidien en mode bading : publication anonyme, rires, rebades et partage WhatsApp.",
       tags: ["JavaScript", "PWA", "SPA", "Vercel"], glow: "rgba(152, 16, 230,.3)",
     },
@@ -617,7 +617,7 @@
         </div>`}
         <div class="p-card__info">
           <span class="p-card__cat mono">${p.cat}</span>
-          <h3>${p.title}</h3>
+          <h3>${p.title}${p.wip ? ` <span class="badge badge--run"><i class="spin" aria-hidden="true"></i>En cours</span>` : ""}</h3>
           <p>${p.desc}</p>
           <ul class="tags">${p.tags.map((t) => `<li>${t}</li>`).join("")}</ul>
           ${p.live ? `<a class="p-card__visit" href="${p.live}" target="_blank" rel="noopener">Voir le site en ligne <svg width="14" height="14" aria-hidden="true"><use href="#i-arrow"/></svg></a>` : ""}
