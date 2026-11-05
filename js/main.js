@@ -537,6 +537,12 @@
      Sans `img`, la carte affiche « Aperçu à venir » jusqu'à ce que la capture soit ajoutée. */
   const PROJECTS = [
     {
+      cat: "réseau social · humour ivoirien", title: "Je Bade", url: "jebade.vercel.app",
+      live: "https://jebade.vercel.app/", img: "assets/projects/jebade.jpg",
+      desc: "Réseau social installable (PWA) pour raconter ses galères du quotidien en mode bading : publication anonyme, rires, rebades et partage WhatsApp.",
+      tags: ["JavaScript", "PWA", "SPA", "Vercel"], glow: "rgba(152, 16, 230,.3)",
+    },
+    {
       cat: "cryptographie · chiffrement aes", title: "AES Chiffrement", url: "aes-test.netlify.app",
       live: "https://aes-test.netlify.app/", img: "",
       desc: "Site qui chiffre et déchiffre un message à partir d'une clé secrète, avec l'algorithme de chiffrement symétrique AES.",
