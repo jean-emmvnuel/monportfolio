@@ -560,14 +560,14 @@
     },
     {
       cat: L("cryptographie · chiffrement aes", "cryptography · aes encryption"), title: L("AES Chiffrement", "AES Encryption"), url: "aes-test.netlify.app",
-      live: "https://aes-test.netlify.app/", img: "",
+      live: "https://aes-test.netlify.app/", img: "assets/projects/aes.jpg",
       desc: L("Site qui chiffre et déchiffre un message à partir d'une clé secrète, avec l'algorithme de chiffrement symétrique AES.",
         "Web app that encrypts and decrypts a message with a secret key, using the AES symmetric encryption algorithm."),
       tags: ["React JS", "AES", L("Cryptographie", "Cryptography")], glow: "rgba(152, 16, 230,.3)",
     },
     {
       cat: L("plateforme · département informatique iua", "platform · iua computer science department"), title: L("Cours IUA", "IUA Courses"), url: "cours-redis-iua.netlify.app",
-      live: "https://cours-redis-iua.netlify.app/", img: "",
+      live: "https://cours-redis-iua.netlify.app/", img: "assets/projects/cours-iua.jpg",
       desc: L("Plateforme qui centralise les PDF de cours du département informatique de l'IUA, classés par niveau et par filière.",
         "Platform that centralizes course PDFs for the IUA computer science department, organized by year and program."),
       tags: ["React JS", "Supabase"], glow: "rgba(220,56,45,.3)",
