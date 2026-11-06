@@ -17,6 +17,7 @@ Puis ouvrir http://localhost:5500.
 - `index.html` : la page
 - `css/style.css` : styles (thème clair / sombre)
 - `js/main.js` : animations et interactions
+- `js/i18n.js` : bascule français / anglais (dictionnaire EN des textes du HTML ; les textes générés en JS utilisent `L("fr", "en")`). La langue suit `?lang=fr|en`, puis le choix enregistré, puis la langue du navigateur.
 - `assets/icons/` : favicon, apple-touch-icon, icônes PWA et `site.webmanifest`
 - `brand/` : sources SVG du logo et concepts
 

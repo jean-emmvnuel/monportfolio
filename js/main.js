@@ -12,6 +12,7 @@
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   const DEV = "assets/tech/"; // icônes Devicon v2.16.0 hébergées localement (pas de dépendance au CDN)
+  const { L, lang } = window.I18N || { L: (fr) => fr, lang: "fr" }; // L("texte FR", "English text"), voir js/i18n.js
 
   /* ---------------- TECH ICONS ----------------
      One icon per technology, wherever its name appears (tags, marquee). */
@@ -38,8 +39,9 @@
     iac: "terraform/terraform-original.svg", redis: "redis/redis-original.svg", netlify: "netlify/netlify-original.svg", python: "python/python-original.svg",
     java: "java/java-original.svg",
     jwt: "@jwt", "refresh tokens": "@key", rbac: "@lock", "rest api": "@api", "ci/cd": "@pipe", cloud: "@cloud",
-    sast: "@shield", dast: "@shield", trivy: "@shield", secrets: "@key", owasp: "@bug", "sécurité": "@shield",
-    rfid: "@chip", aes: "@lock", cryptographie: "@key", "temps réel": "@bolt", perf: "@bolt", devsecops: "@shield",
+    sast: "@shield", dast: "@shield", trivy: "@shield", secrets: "@key", owasp: "@bug", "sécurité": "@shield", security: "@shield",
+    rfid: "@chip", aes: "@lock", cryptographie: "@key", cryptography: "@key", "temps réel": "@bolt", "real-time": "@bolt",
+    perf: "@bolt", devsecops: "@shield",
   };
   function techIcon(name) {
     const v = TECH[name.trim().toLowerCase()];
@@ -59,6 +61,10 @@
   const storedTheme = (() => { try { return localStorage.getItem("theme"); } catch { return null; } })();
   if (storedTheme) root.dataset.theme = storedTheme;
   else if (window.matchMedia("(prefers-color-scheme: dark)").matches) root.dataset.theme = "dark";
+
+  /* ---------------- LANGUAGE (FR / EN) ---------------- */
+  $("#langToggle").addEventListener("click", () => window.I18N?.set(lang === "en" ? "fr" : "en"));
+  const fromLangSwitch = (() => { try { const v = sessionStorage.getItem("i18n-skip-loader"); sessionStorage.removeItem("i18n-skip-loader"); return !!v; } catch { return false; } })();
 
   $("#themeToggle").addEventListener("click", (e) => {
     const next = root.dataset.theme === "dark" ? "light" : "dark";
@@ -150,7 +156,7 @@
     return new Promise((resolve) => {
       const lines = $("#loaderLines");
       const pct = { v: 0 };
-      if (reduceMotion) {
+      if (reduceMotion || fromLangSwitch) {
         $("#loader").remove();
         return resolve();
       }
@@ -449,53 +455,62 @@
     jwt: '<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M12 16v6M2 12h6M16 12h6M5 5l4 4M15 15l4 4M19 5l-4 4M9 15l-4 4"/></svg>',
   };
   const img = (p) => `<img src="${DEV}${p}" alt="" width="28" height="28" loading="lazy"/>`;
+  const LV = {
+    adv: L("avancé", "advanced"), solid: L("solide", "proficient"), basic: L("bases", "basic"),
+    used: L("pratiqué", "hands-on"), learn: L("en apprentissage", "learning"), soon: L("à venir", "planned"),
+    ok: L("acquis", "proficient"), goal: L("objectif DevSecOps", "DevSecOps goal"),
+  };
   const SKILLS = {
     backend: [
-      { n: "Node.js", d: "Runtime principal", l: 85, i: img("nodejs/nodejs-original.svg"), lv: "avancé" },
-      { n: "NestJS", d: "API structurées, guards, DI", l: 82, i: img("nestjs/nestjs-original.svg"), lv: "avancé" },
-      { n: "Express.js", d: "API REST légères", l: 80, i: img("express/express-original.svg"), lv: "avancé" },
-      { n: "TypeScript", d: "Typage strict partout", l: 78, i: img("typescript/typescript-original.svg"), lv: "solide" },
-      { n: "Prisma ORM", d: "Schémas & migrations", l: 76, i: img("prisma/prisma-original.svg"), lv: "solide" },
-      { n: "PostgreSQL", d: "Modélisation relationnelle", l: 75, i: img("postgresql/postgresql-original.svg"), lv: "solide" },
-      { n: "MySQL", d: "Bases relationnelles", l: 68, i: img("mysql/mysql-original.svg"), lv: "solide" },
-      { n: "Supabase", d: "Postgres hébergé, auth, stockage", l: 66, i: img("supabase/supabase-original.svg"), lv: "solide" },
-      { n: "REST API", d: "Design, versioning, docs", l: 85, i: ico.api, lv: "avancé" },
-      { n: "Postman", d: "Tests & collections d'API", l: 80, i: img("postman/postman-original.svg"), lv: "avancé" },
-      { n: "Git & GitHub", d: "Workflow, branches, PR", l: 82, i: img("git/git-original.svg"), lv: "avancé" },
+      { n: "Node.js", d: L("Runtime principal", "Main runtime"), l: 85, i: img("nodejs/nodejs-original.svg"), lv: LV.adv },
+      { n: "NestJS", d: L("API structurées, guards, DI", "Structured APIs, guards, DI"), l: 82, i: img("nestjs/nestjs-original.svg"), lv: LV.adv },
+      { n: "Express.js", d: L("API REST légères", "Lightweight REST APIs"), l: 80, i: img("express/express-original.svg"), lv: LV.adv },
+      { n: "TypeScript", d: L("Typage strict partout", "Strict typing everywhere"), l: 78, i: img("typescript/typescript-original.svg"), lv: LV.solid },
+      { n: "Prisma ORM", d: L("Schémas & migrations", "Schemas & migrations"), l: 76, i: img("prisma/prisma-original.svg"), lv: LV.solid },
+      { n: "PostgreSQL", d: L("Modélisation relationnelle", "Relational data modeling"), l: 75, i: img("postgresql/postgresql-original.svg"), lv: LV.solid },
+      { n: "MySQL", d: L("Bases relationnelles", "Relational databases"), l: 68, i: img("mysql/mysql-original.svg"), lv: LV.solid },
+      { n: "Supabase", d: L("Postgres hébergé, auth, stockage", "Hosted Postgres, auth, storage"), l: 66, i: img("supabase/supabase-original.svg"), lv: LV.solid },
+      { n: "REST API", d: L("Design, versioning, docs", "Design, versioning, docs"), l: 85, i: ico.api, lv: LV.adv },
+      { n: "Postman", d: L("Tests & collections d'API", "API testing & collections"), l: 80, i: img("postman/postman-original.svg"), lv: LV.adv },
+      { n: "Git & GitHub", d: L("Workflow, branches, PR", "Workflow, branches, PRs"), l: 82, i: img("git/git-original.svg"), lv: LV.adv },
     ],
     lang: [
-      { n: "JavaScript", d: "Langage de tous les jours", l: 82, i: img("javascript/javascript-original.svg"), lv: "avancé" },
-      { n: "HTML & CSS", d: "Intégration, responsive", l: 75, i: img("css3/css3-original.svg"), lv: "solide" },
-      { n: "React JS", d: "Interfaces web", l: 70, i: img("react/react-original.svg"), lv: "solide" },
-      { n: "React Native", d: "Applications mobiles", l: 65, i: img("react/react-original.svg"), lv: "solide" },
-      { n: "Python", d: "Scripts, automatisation", l: 40, i: img("python/python-original.svg"), lv: "bases" },
-      { n: "Java", d: "Programmation orientée objet", l: 40, i: img("java/java-original.svg"), lv: "bases" },
-      { n: "Arduino", d: "IoT, projet de pointage RFID", l: 55, i: img("arduino/arduino-original.svg"), lv: "pratiqué" },
+      { n: "JavaScript", d: L("Langage de tous les jours", "My everyday language"), l: 82, i: img("javascript/javascript-original.svg"), lv: LV.adv },
+      { n: "HTML & CSS", d: L("Intégration, responsive", "Front-end integration, responsive design"), l: 75, i: img("css3/css3-original.svg"), lv: LV.solid },
+      { n: "React JS", d: L("Interfaces web", "Web interfaces"), l: 70, i: img("react/react-original.svg"), lv: LV.solid },
+      { n: "React Native", d: L("Applications mobiles", "Mobile apps"), l: 65, i: img("react/react-original.svg"), lv: LV.solid },
+      { n: "Python", d: L("Scripts, automatisation", "Scripting, automation"), l: 40, i: img("python/python-original.svg"), lv: LV.basic },
+      { n: "Java", d: L("Programmation orientée objet", "Object-oriented programming"), l: 40, i: img("java/java-original.svg"), lv: LV.basic },
+      { n: "Arduino", d: L("IoT, projet de pointage RFID", "IoT, RFID attendance project"), l: 55, i: img("arduino/arduino-original.svg"), lv: LV.used },
     ],
     devops: [
-      { n: "Docker", d: "Premières images, Compose", l: 40, i: img("docker/docker-original.svg"), lv: "en apprentissage", learn: true },
-      { n: "Linux", d: "Shell, commandes de base", l: 40, i: img("linux/linux-original.svg"), lv: "bases", learn: true },
-      { n: "CI/CD", d: "GitHub Actions, pipelines", l: 20, i: ico.pipe, lv: "en apprentissage", learn: true },
-      { n: "Cloud", d: "Au programme du Master ESATIC", l: 10, i: ico.cloud, lv: "à venir", learn: true },
-      { n: "Nginx", d: "Reverse proxy", l: 10, i: img("nginx/nginx-original.svg"), lv: "à venir", learn: true },
-      { n: "Infrastructure as Code", d: "Terraform, Ansible", l: 5, i: ico.pipe, lv: "à venir", learn: true },
+      { n: "Docker", d: L("Premières images, Compose", "First images, Compose"), l: 40, i: img("docker/docker-original.svg"), lv: LV.learn, learn: true },
+      { n: "Linux", d: L("Shell, commandes de base", "Shell, basic commands"), l: 40, i: img("linux/linux-original.svg"), lv: LV.basic, learn: true },
+      { n: "CI/CD", d: L("GitHub Actions, pipelines", "GitHub Actions, pipelines"), l: 20, i: ico.pipe, lv: LV.learn, learn: true },
+      { n: "Cloud", d: L("Au programme du Master ESATIC", "Part of my ESATIC master's program"), l: 10, i: ico.cloud, lv: LV.soon, learn: true },
+      { n: "Nginx", d: L("Reverse proxy", "Reverse proxy"), l: 10, i: img("nginx/nginx-original.svg"), lv: LV.soon, learn: true },
+      { n: "Infrastructure as Code", d: L("Terraform, Ansible", "Terraform, Ansible"), l: 5, i: ico.pipe, lv: LV.soon, learn: true },
     ],
     sec: [
-      { n: "JWT", d: "Access / refresh tokens", l: 82, i: ico.jwt, lv: "acquis" },
-      { n: "RBAC", d: "Contrôle d'accès par rôles", l: 80, i: ico.lock, lv: "acquis" },
-      { n: "Sécurité des API", d: "Validation, rate-limit, CORS", l: 70, i: ico.shield, lv: "acquis" },
-      { n: "Traçabilité", d: "Logs & audit des opérations", l: 65, i: ico.key, lv: "acquis" },
-      { n: "OWASP Top 10", d: "Vulnérabilités web", l: 30, i: ico.bug, lv: "en apprentissage", learn: true },
-      { n: "SAST / DAST", d: "Analyse dans le pipeline", l: 5, i: ico.shield, lv: "objectif DevSecOps", learn: true },
-      { n: "Scan d'images", d: "Trivy, dépendances", l: 5, i: img("docker/docker-original.svg"), lv: "objectif DevSecOps", learn: true },
-      { n: "Gestion des secrets", d: "Vault, rotation", l: 5, i: ico.key, lv: "objectif DevSecOps", learn: true },
+      { n: "JWT", d: L("Access / refresh tokens", "Access / refresh tokens"), l: 82, i: ico.jwt, lv: LV.ok },
+      { n: "RBAC", d: L("Contrôle d'accès par rôles", "Role-based access control"), l: 80, i: ico.lock, lv: LV.ok },
+      { n: L("Sécurité des API", "API security"), d: L("Validation, rate-limit, CORS", "Validation, rate limiting, CORS"), l: 70, i: ico.shield, lv: LV.ok },
+      { n: L("Traçabilité", "Traceability"), d: L("Logs & audit des opérations", "Logging & audit trails"), l: 65, i: ico.key, lv: LV.ok },
+      { n: "OWASP Top 10", d: L("Vulnérabilités web", "Web vulnerabilities"), l: 30, i: ico.bug, lv: LV.learn, learn: true },
+      { n: "SAST / DAST", d: L("Analyse dans le pipeline", "Analysis in the pipeline"), l: 5, i: ico.shield, lv: LV.goal, learn: true },
+      { n: L("Scan d'images", "Image scanning"), d: L("Trivy, dépendances", "Trivy, dependencies"), l: 5, i: img("docker/docker-original.svg"), lv: LV.goal, learn: true },
+      { n: L("Gestion des secrets", "Secrets management"), d: L("Vault, rotation", "Vault, rotation"), l: 5, i: ico.key, lv: LV.goal, learn: true },
     ],
   };
   const SKILL_NOTES = {
-    backend: "Ce que je <b>maîtrise et pratique</b> déjà, en projet comme en entreprise.",
-    lang: "Les autres langages et outils que j'utilise, du front-end à l'<b>IoT</b>.",
-    devops: "Compétences <b>en cours d'acquisition</b> dans le cadre de ma reconversion. Je ne les ai pas encore utilisées en production.",
-    sec: "La sécurité des API est <b>acquise</b>. Le reste est mon <b>objectif DevSecOps</b>, pas encore une compétence.",
+    backend: L("Ce que je <b>maîtrise et pratique</b> déjà, en projet comme en entreprise.",
+      "What I have <b>already mastered and use</b>, in projects and at work."),
+    lang: L("Les autres langages et outils que j'utilise, du front-end à l'<b>IoT</b>.",
+      "Other languages and tools I use, from front-end to <b>IoT</b>."),
+    devops: L("Compétences <b>en cours d'acquisition</b> dans le cadre de ma reconversion. Je ne les ai pas encore utilisées en production.",
+      "Skills I'm <b>currently learning</b> as part of my move into DevOps. I haven't used them in production yet."),
+    sec: L("La sécurité des API est <b>acquise</b>. Le reste est mon <b>objectif DevSecOps</b>, pas encore une compétence.",
+      "API security is a <b>skill I have</b>. The rest is my <b>DevSecOps goal</b>, not yet a skill."),
   };
   (function skills() {
     const grid = $("#skillGrid"), tabs = $$("#skillTabs button"), pill = $("#tabPill");
@@ -537,28 +552,32 @@
      Sans `img`, la carte affiche « Aperçu à venir » jusqu'à ce que la capture soit ajoutée. */
   const PROJECTS = [
     {
-      cat: "réseau social · humour ivoirien", title: "Je Bade", url: "jebade.vercel.app",
+      cat: L("réseau social · humour ivoirien", "social network · Ivorian humor"), title: "Je Bade", url: "jebade.vercel.app",
       live: "https://jebade.vercel.app/", img: "assets/projects/jebade.jpg", wip: true,
-      desc: "Réseau social installable (PWA) pour raconter ses galères du quotidien en mode bading : publication anonyme, rires, rebades et partage WhatsApp.",
+      desc: L("Réseau social installable (PWA) pour raconter ses galères du quotidien en mode bading : publication anonyme, rires, rebades et partage WhatsApp.",
+        "Installable social web app (PWA) for sharing everyday mishaps, Ivorian style: anonymous posting, laughs, reposts and WhatsApp sharing."),
       tags: ["JavaScript", "PWA", "SPA", "Vercel"], glow: "rgba(152, 16, 230,.3)",
     },
     {
-      cat: "cryptographie · chiffrement aes", title: "AES Chiffrement", url: "aes-test.netlify.app",
+      cat: L("cryptographie · chiffrement aes", "cryptography · aes encryption"), title: L("AES Chiffrement", "AES Encryption"), url: "aes-test.netlify.app",
       live: "https://aes-test.netlify.app/", img: "",
-      desc: "Site qui chiffre et déchiffre un message à partir d'une clé secrète, avec l'algorithme de chiffrement symétrique AES.",
-      tags: ["React JS", "AES", "Cryptographie"], glow: "rgba(152, 16, 230,.3)",
+      desc: L("Site qui chiffre et déchiffre un message à partir d'une clé secrète, avec l'algorithme de chiffrement symétrique AES.",
+        "Web app that encrypts and decrypts a message with a secret key, using the AES symmetric encryption algorithm."),
+      tags: ["React JS", "AES", L("Cryptographie", "Cryptography")], glow: "rgba(152, 16, 230,.3)",
     },
     {
-      cat: "plateforme · département informatique iua", title: "Cours IUA", url: "cours-redis-iua.netlify.app",
+      cat: L("plateforme · département informatique iua", "platform · iua computer science department"), title: L("Cours IUA", "IUA Courses"), url: "cours-redis-iua.netlify.app",
       live: "https://cours-redis-iua.netlify.app/", img: "",
-      desc: "Plateforme qui centralise les PDF de cours du département informatique de l'IUA, classés par niveau et par filière.",
+      desc: L("Plateforme qui centralise les PDF de cours du département informatique de l'IUA, classés par niveau et par filière.",
+        "Platform that centralizes course PDFs for the IUA computer science department, organized by year and program."),
       tags: ["React JS", "Supabase"], glow: "rgba(220,56,45,.3)",
     },
     {
-      cat: "santé · projet de fin de licence", title: "PharmaCare API", url: "api.pharmacare.ci/v1",
-      desc: "API REST sécurisée pour la gestion des pharmacies, des médicaments et des utilisateurs. Authentification JWT et contrôle d'accès basé sur les rôles.",
+      cat: L("santé · projet de fin de licence", "healthcare · final-year bachelor's project"), title: "PharmaCare API", url: "api.pharmacare.ci/v1",
+      desc: L("API REST sécurisée pour la gestion des pharmacies, des médicaments et des utilisateurs. Authentification JWT et contrôle d'accès basé sur les rôles.",
+        "Secure REST API to manage pharmacies, medicines and users. JWT authentication and role-based access control."),
       tags: ["NestJS", "Prisma", "PostgreSQL", "JWT", "RBAC"], glow: "rgba(152, 16, 230,.3)",
-      kpi: "RBAC", kpiLabel: "3 rôles · guards NestJS",
+      kpi: "RBAC", kpiLabel: L("3 rôles · guards NestJS", "3 roles · NestJS guards"),
       req: `<span class="m">GET</span> <span class="u">/v1/medicaments</span>
 <span class="h">Authorization: Bearer eyJhbGci…</span>
 
@@ -570,9 +589,10 @@
 }]`,
     },
     {
-      cat: "iot · club robotique iua", title: "RFID Pointage", url: "rfid.iua.local/api",
-      desc: "Système de pointage RFID en temps réel : API REST sécurisée, architecture évolutive pour des équipements Arduino, traçabilité de chaque opération.",
-      tags: ["Node.js", "Express", "Arduino", "RFID", "Temps réel"], glow: "rgba(62,224,143,.25)",
+      cat: L("iot · club robotique iua", "iot · iua robotics club"), title: L("RFID Pointage", "RFID Attendance"), url: "rfid.iua.local/api",
+      desc: L("Système de pointage RFID en temps réel : API REST sécurisée, architecture évolutive pour des équipements Arduino, traçabilité de chaque opération.",
+        "Real-time RFID attendance system: secure REST API, scalable architecture for Arduino devices, full traceability of every operation."),
+      tags: ["Node.js", "Express", "Arduino", "RFID", L("Temps réel", "Real-time")], glow: "rgba(62,224,143,.25)",
       kpi: "Live", kpiLabel: "badge → API → dashboard",
       req: `<span class="m">POST</span> <span class="u">/api/pointages</span>
 <span class="h">X-Device: arduino-uno-07</span>
@@ -585,10 +605,11 @@
 }`,
     },
     {
-      cat: "entreprise · djoumaf côte d'ivoire", title: "Djoumaf Auth", url: "auth.djoumaf.ci",
-      desc: "Mise en place d'un système d'authentification robuste et optimisation des échanges entre front et back pour réduire la latence et améliorer l'expérience utilisateur.",
-      tags: ["Node.js", "JWT", "Refresh tokens", "Sécurité", "Perf"], glow: "rgba(124,196,255,.25)",
-      kpi: "Auth", kpiLabel: "tokens courts, refresh sécurisé",
+      cat: L("entreprise · djoumaf côte d'ivoire", "company · djoumaf côte d'ivoire"), title: "Djoumaf Auth", url: "auth.djoumaf.ci",
+      desc: L("Mise en place d'un système d'authentification robuste et optimisation des échanges entre front et back pour réduire la latence et améliorer l'expérience utilisateur.",
+        "Built a robust authentication system and optimized front-end/back-end communication to reduce latency and improve the user experience."),
+      tags: ["Node.js", "JWT", "Refresh tokens", L("Sécurité", "Security"), "Perf"], glow: "rgba(124,196,255,.25)",
+      kpi: "Auth", kpiLabel: L("tokens courts, refresh sécurisé", "short-lived tokens, secure refresh"),
       req: `<span class="m">POST</span> <span class="u">/auth/refresh</span>
 <span class="h">Cookie: rt=••••••; HttpOnly; Secure</span>
 
@@ -608,8 +629,8 @@
         ${p.live ? `
         <div class="p-card__shot">
           ${p.img
-            ? `<img src="${p.img}" alt="Capture du site ${p.title}" loading="lazy" draggable="false" />`
-            : `<div class="p-card__shot-ph"><svg width="44" height="44" aria-hidden="true"><use href="#i-logo"/></svg><span>Aperçu à venir</span></div>`}
+            ? `<img src="${p.img}" alt="${L("Capture du site", "Screenshot of")} ${p.title}" loading="lazy" draggable="false" />`
+            : `<div class="p-card__shot-ph"><svg width="44" height="44" aria-hidden="true"><use href="#i-logo"/></svg><span>${L("Aperçu à venir", "Preview coming soon")}</span></div>`}
         </div>` : `
         <div class="p-card__screen">
           <pre class="req">${p.req}</pre>
@@ -617,10 +638,10 @@
         </div>`}
         <div class="p-card__info">
           <span class="p-card__cat mono">${p.cat}</span>
-          <h3>${p.title}${p.wip ? ` <span class="badge badge--run"><i class="spin" aria-hidden="true"></i>En cours</span>` : ""}</h3>
+          <h3>${p.title}${p.wip ? ` <span class="badge badge--run"><i class="spin" aria-hidden="true"></i>${L("En cours", "In progress")}</span>` : ""}</h3>
           <p>${p.desc}</p>
           <ul class="tags">${p.tags.map((t) => `<li>${t}</li>`).join("")}</ul>
-          ${p.live ? `<a class="p-card__visit" href="${p.live}" target="_blank" rel="noopener">Voir le site en ligne <svg width="14" height="14" aria-hidden="true"><use href="#i-arrow"/></svg></a>` : ""}
+          ${p.live ? `<a class="p-card__visit" href="${p.live}" target="_blank" rel="noopener">${L("Voir le site en ligne", "Visit the live site")} <svg width="14" height="14" aria-hidden="true"><use href="#i-arrow"/></svg></a>` : ""}
         </div>
       </article>`).join("");
 
@@ -668,7 +689,7 @@
     $("#projNext").addEventListener("click", () => next());
     $("#projPrev").addEventListener("click", prev);
     stack.setAttribute("tabindex", "0");
-    stack.setAttribute("aria-label", "Projets. Flèches gauche et droite pour naviguer");
+    stack.setAttribute("aria-label", L("Projets. Flèches gauche et droite pour naviguer", "Projects. Use the left and right arrow keys to browse"));
     stack.addEventListener("keydown", (e) => { if (e.key === "ArrowRight") next(); if (e.key === "ArrowLeft") prev(); });
 
     // drag / swipe
@@ -723,26 +744,26 @@
          image: "assets/certs/mon-certificat.jpg" (optionnel) }
      Tant que la liste est vide, la section affiche un message d'attente. */
   const CERTS = [
-    { title: "Les fondements de la méthode Scrum", issuer: "LinkedIn Learning", date: "2025-05", status: "obtenu",
+    { title: L("Les fondements de la méthode Scrum", "Scrum Fundamentals"), issuer: "LinkedIn Learning", date: "2025-05", status: "obtenu",
       skills: ["Scrum"], url: "assets/certs/scrum.pdf", image: "assets/certs/scrum.jpg" },
-    { title: "Préparer votre carrière dans le développement logiciel", issuer: "LinkedIn Learning", date: "2025-04", status: "obtenu",
-      skills: ["Développement logiciel", "Gestion de carrière"], url: "assets/certs/carriere-dev-logiciel.pdf", image: "assets/certs/carriere-dev-logiciel.jpg" },
-    { title: "Les prompts engineering avancés", issuer: "LinkedIn Learning", date: "2025-03", status: "obtenu",
-      skills: ["Prompt Engineering", "IA"], url: "assets/certs/prompt-engineering.pdf", image: "assets/certs/prompt-engineering.jpg" },
+    { title: L("Préparer votre carrière dans le développement logiciel", "Preparing for a Career in Software Development"), issuer: "LinkedIn Learning", date: "2025-04", status: "obtenu",
+      skills: [L("Développement logiciel", "Software development"), L("Gestion de carrière", "Career management")], url: "assets/certs/carriere-dev-logiciel.pdf", image: "assets/certs/carriere-dev-logiciel.jpg" },
+    { title: L("Les prompts engineering avancés", "Advanced Prompt Engineering"), issuer: "LinkedIn Learning", date: "2025-03", status: "obtenu",
+      skills: ["Prompt Engineering", L("IA", "AI")], url: "assets/certs/prompt-engineering.pdf", image: "assets/certs/prompt-engineering.jpg" },
   ];
   (function certs() {
     const grid = $("#certGrid"), empty = $("#certEmpty");
     if (!CERTS.length) { grid.hidden = true; empty.hidden = false; return; }
-    const fmt = (d) => { const [y, m] = d.split("-"); return m ? new Date(+y, +m - 1).toLocaleDateString("fr-FR", { month: "short", year: "numeric" }) : y; };
+    const fmt = (d) => { const [y, m] = d.split("-"); return m ? new Date(+y, +m - 1).toLocaleDateString(L("fr-FR", "en-US"), { month: "short", year: "numeric" }) : y; };
     grid.innerHTML = CERTS.map((c) => `
       <li class="cert${c.status === "en cours" ? " cert--progress" : ""}">
-        ${c.image ? `<img class="cert__img" src="${c.image}" alt="Certificat ${c.title}" loading="lazy" />` : `<div class="cert__img cert__img--ph" aria-hidden="true"><svg width="40" height="40"><use href="#i-logo"/></svg></div>`}
+        ${c.image ? `<img class="cert__img" src="${c.image}" alt="${L("Certificat", "Certificate:")} ${c.title}" loading="lazy" />` : `<div class="cert__img cert__img--ph" aria-hidden="true"><svg width="40" height="40"><use href="#i-logo"/></svg></div>`}
         <div class="cert__body">
-          <span class="cert__status">${c.status === "en cours" ? "En cours" : "Obtenu"}</span>
+          <span class="cert__status">${c.status === "en cours" ? L("En cours", "In progress") : L("Obtenu", "Completed")}</span>
           <h3>${c.title}</h3>
           <p>${c.issuer}${c.date ? ` · <time>${fmt(c.date)}</time>` : ""}</p>
           ${c.skills ? `<ul class="cert__skills">${c.skills.map((k) => `<li>${k}</li>`).join("")}</ul>` : ""}
-          ${c.url ? `<a href="${c.url}" target="_blank" rel="noopener" class="cert__link link-line">Voir le certificat <svg width="14" height="14" aria-hidden="true"><use href="#i-arrow"/></svg></a>` : ""}
+          ${c.url ? `<a href="${c.url}" target="_blank" rel="noopener" class="cert__link link-line">${L("Voir le certificat", "View certificate")} <svg width="14" height="14" aria-hidden="true"><use href="#i-arrow"/></svg></a>` : ""}
         </div>
       </li>`).join("");
     if (!reduceMotion) gsap.from(".cert", { y: 20, opacity: 0, duration: 0.7, stagger: 0.08, ease: "power2.out", scrollTrigger: { trigger: grid, start: "top 85%" } });
@@ -757,8 +778,8 @@
     const btn = $("#copyMail"), txt = $("#copyText"), mail = "emmanuelahossi667@gmail.com";
     let resetTimer;
     btn.addEventListener("click", async () => {
-      try { await navigator.clipboard.writeText(mail); txt.textContent = "Adresse copiée"; }
-      catch { txt.textContent = "Copie impossible, sélectionnez l'adresse"; }
+      try { await navigator.clipboard.writeText(mail); txt.textContent = L("Adresse copiée", "Email address copied"); }
+      catch { txt.textContent = L("Copie impossible, sélectionnez l'adresse", "Couldn't copy, please select the address"); }
       gsap.fromTo(btn, { scale: 0.9 }, { scale: 1, duration: 0.6, ease: "elastic.out(1,0.4)" });
       clearTimeout(resetTimer);
       resetTimer = setTimeout(() => (txt.textContent = mail), 2000);
@@ -775,5 +796,9 @@
     heroIntro();
     setupReveals();
     ScrollTrigger.refresh();
+    // après un changement de langue, revenir là où le visiteur lisait
+    let y = 0;
+    try { y = +sessionStorage.getItem("i18n-scroll") || 0; sessionStorage.removeItem("i18n-scroll"); } catch {}
+    if (y) lenis ? lenis.scrollTo(y, { immediate: true, force: true }) : window.scrollTo(0, y);
   });
 })();
