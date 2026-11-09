@@ -290,6 +290,7 @@ section { position: relative; }
 .badge { display: inline-flex; align-items: center; gap: .4rem; padding: .32rem .75rem; border-radius: 999px; font-size: .74rem; font-weight: 600; }
 .badge--ok { background: rgba(62, 224, 143, .14); color: #3EE08F; }
 .badge--run { background: rgba(245, 191, 79, .14); color: #F5BF4F; }
+.badge--collab { background: rgba(181, 123, 242, .16); color: #C99BF7; }
 .badge--queue { background: rgba(255,255,255,.08); color: #CFC7BA; }
 .badge--target { background: rgba(0,0,0,.22); color: #fff; }
 .spin { width: 11px; height: 11px; border-radius: 50%; border: 2px solid currentColor; border-right-color: transparent; animation: spin 1s linear infinite; }
@@ -320,8 +321,6 @@ section { position: relative; }
 .skill p { font-size: .87rem; color: var(--muted); line-height: 1.4; }
 .skill__lvl { font-size: .75rem; font-weight: 600; padding: .28rem .7rem; border-radius: 999px; background: var(--bg-2); color: var(--ink-2); white-space: nowrap; }
 .skill__lvl--learn { background: transparent; border: 1px dashed var(--accent); color: var(--accent-ink); }
-.skills__extra { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem clamp(2rem, 5vw, 4.5rem); margin-top: 2.5rem; color: var(--ink-2); }
-.skills__extra span { display: block; font-weight: 700; color: var(--ink); font-size: .95rem; margin-bottom: .2rem; }
 
 /* =================== PROJECTS =================== */
 .projects { overflow: hidden; padding: clamp(5rem, 10vw, 8rem) 0; background: var(--bg-2); border-radius: 40px; margin-inline: clamp(.5rem, 1.5vw, 1.2rem); }
@@ -428,7 +427,7 @@ a.c-link:hover span { background-size: 100% 1.5px; }
   .about__points { grid-template-columns: 1fr; }
   .projects__grid { grid-template-columns: 1fr; }
   .journey__cols { grid-template-columns: 1fr; }
-  .skills__list, .skills__extra { grid-template-columns: 1fr; }
+  .skills__list { grid-template-columns: 1fr; }
   .panel { grid-template-columns: 1fr; width: 100%; min-height: 0; gap: 1.4rem; }
   .panel__num { font-size: 3rem; }
   .pipeline__panels { flex-direction: column; width: auto; }

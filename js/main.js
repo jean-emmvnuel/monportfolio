@@ -33,7 +33,9 @@
     "node.js": "nodejs/nodejs-original.svg", nestjs: "nestjs/nestjs-original.svg", express: "express/express-original.svg",
     typescript: "typescript/typescript-original.svg", javascript: "javascript/javascript-original.svg",
     prisma: "prisma/prisma-original.svg", postgresql: "postgresql/postgresql-original.svg", mysql: "mysql/mysql-original.svg",
-    supabase: "supabase/supabase-original.svg", "react js": "react/react-original.svg", react: "react/react-original.svg",
+    supabase: "supabase/supabase-original.svg", "supabase (postgresql)": "supabase/supabase-original.svg",
+    "react js": "react/react-original.svg", react: "react/react-original.svg", "react native": "react/react-original.svg",
+    "next.js": "nextjs/nextjs-original.svg",
     arduino: "arduino/arduino-original.svg", docker: "docker/docker-original.svg", compose: "docker/docker-original.svg",
     linux: "linux/linux-original.svg", git: "git/git-original.svg", "github actions": "githubactions/githubactions-original.svg",
     iac: "terraform/terraform-original.svg", redis: "redis/redis-original.svg", netlify: "netlify/netlify-original.svg", python: "python/python-original.svg",
@@ -487,7 +489,7 @@
       { n: "Docker", d: L("Premières images, Compose", "First images, Compose"), l: 40, i: img("docker/docker-original.svg"), lv: LV.learn, learn: true },
       { n: "Linux", d: L("Shell, commandes de base", "Shell, basic commands"), l: 40, i: img("linux/linux-original.svg"), lv: LV.basic, learn: true },
       { n: "CI/CD", d: L("GitHub Actions, pipelines", "GitHub Actions, pipelines"), l: 20, i: ico.pipe, lv: LV.learn, learn: true },
-      { n: "Cloud", d: L("Au programme du Master ESATIC", "Part of my ESATIC master's program"), l: 10, i: ico.cloud, lv: LV.soon, learn: true },
+      { n: "Cloud", d: L("Notions et services de base", "Core concepts and services"), l: 10, i: ico.cloud, lv: LV.soon, learn: true },
       { n: "Nginx", d: L("Reverse proxy", "Reverse proxy"), l: 10, i: img("nginx/nginx-original.svg"), lv: LV.soon, learn: true },
       { n: "Infrastructure as Code", d: L("Terraform, Ansible", "Terraform, Ansible"), l: 5, i: ico.pipe, lv: LV.soon, learn: true },
     ],
@@ -507,7 +509,7 @@
       "What I have <b>already mastered and use</b>, in projects and at work."),
     lang: L("Les autres langages et outils que j'utilise, du front-end à l'<b>IoT</b>.",
       "Other languages and tools I use, from front-end to <b>IoT</b>."),
-    devops: L("Compétences <b>en cours d'acquisition</b> dans le cadre de ma reconversion. Je ne les ai pas encore utilisées en production.",
+    devops: L("Compétences <b>en cours d'acquisition</b> dans le cadre de ma spécialisation DevOps. Je ne les ai pas encore utilisées en production.",
       "Skills I'm <b>currently learning</b> as part of my move into DevOps. I haven't used them in production yet."),
     sec: L("La sécurité des API est <b>acquise</b>. Le reste est mon <b>objectif DevSecOps</b>, pas encore une compétence.",
       "API security is a <b>skill I have</b>. The rest is my <b>DevSecOps goal</b>, not yet a skill."),
@@ -552,46 +554,45 @@
      Sans `img`, la carte affiche « Aperçu à venir » jusqu'à ce que la capture soit ajoutée. */
   const PROJECTS = [
     {
-      cat: L("réseau social · humour ivoirien", "social network · Ivorian humor"), title: "Je Bade", url: "jebade.vercel.app",
-      live: "https://jebade.vercel.app/", img: "assets/projects/jebade.jpg", wip: true,
+      cat: L("réseau social · humour ivoirien", "social network · Ivorian humor"), title: "On Bade", url: "jebade.vercel.app",
+      live: "https://jebade.vercel.app/", img: "assets/projects/onbade.jpg", wip: true, collab: true,
       desc: L("Réseau social installable (PWA) pour raconter ses galères du quotidien en mode bading : publication anonyme, rires, rebades et partage WhatsApp.",
         "Installable social web app (PWA) for sharing everyday mishaps, Ivorian style: anonymous posting, laughs, reposts and WhatsApp sharing."),
-      tags: ["JavaScript", "PWA", "SPA", "Vercel"], glow: "rgba(152, 16, 230,.3)",
+      tags: ["React JS", "Next.js", "PostgreSQL"], glow: "rgba(152, 16, 230,.3)",
     },
     {
       cat: L("cryptographie · chiffrement aes", "cryptography · aes encryption"), title: L("AES Chiffrement", "AES Encryption"), url: "aes-test.netlify.app",
       live: "https://aes-test.netlify.app/", img: "assets/projects/aes.jpg",
       desc: L("Site qui chiffre et déchiffre un message à partir d'une clé secrète, avec l'algorithme de chiffrement symétrique AES.",
         "Web app that encrypts and decrypts a message with a secret key, using the AES symmetric encryption algorithm."),
-      tags: ["React JS", "AES", L("Cryptographie", "Cryptography")], glow: "rgba(152, 16, 230,.3)",
+      tags: ["React JS"], glow: "rgba(152, 16, 230,.3)",
     },
     {
       cat: L("plateforme · département informatique iua", "platform · iua computer science department"), title: L("Cours IUA", "IUA Courses"), url: "cours-redis-iua.netlify.app",
       live: "https://cours-redis-iua.netlify.app/", img: "assets/projects/cours-iua.jpg",
       desc: L("Plateforme qui centralise les PDF de cours du département informatique de l'IUA, classés par niveau et par filière.",
         "Platform that centralizes course PDFs for the IUA computer science department, organized by year and program."),
-      tags: ["React JS", "Supabase"], glow: "rgba(220,56,45,.3)",
+      tags: ["React JS", "Supabase (PostgreSQL)"], glow: "rgba(220,56,45,.3)",
     },
     {
-      cat: L("santé · projet de fin de licence", "healthcare · final-year bachelor's project"), title: "PharmaCare API", url: "api.pharmacare.ci/v1",
-      desc: L("API REST sécurisée pour la gestion des pharmacies, des médicaments et des utilisateurs. Authentification JWT et contrôle d'accès basé sur les rôles.",
-        "Secure REST API to manage pharmacies, medicines and users. JWT authentication and role-based access control."),
-      tags: ["NestJS", "Prisma", "PostgreSQL", "JWT", "RBAC"], glow: "rgba(152, 16, 230,.3)",
-      kpi: "RBAC", kpiLabel: L("3 rôles · guards NestJS", "3 roles · NestJS guards"),
-      req: `<span class="m">GET</span> <span class="u">/v1/medicaments</span>
-<span class="h">Authorization: Bearer eyJhbGci…</span>
-
-<span class="st">200 OK</span> · 42ms
-[{
-  <span class="k">"nom"</span>: <span class="s">"Paracétamol"</span>,
-  <span class="k">"stock"</span>: 128,
-  <span class="k">"pharmacie"</span>: <span class="s">"Cocody"</span>
-}]`,
+      cat: L("événementiel · billetterie", "events · ticketing"), title: "Verif Ticket", url: "verif-ticket.netlify.app",
+      live: "https://verif-ticket.netlify.app/", img: "assets/projects/verif-ticket.jpg",
+      desc: L("Système de gestion et de vérification des tickets de l'événement La Nuit de l'Aura, avec un espace protégé par authentification.",
+        "Ticket management and verification system for the La Nuit de l'Aura event, with an authentication-protected workspace."),
+      tags: ["React JS", "Supabase", "PostgreSQL", "Prisma", "NestJS"], glow: "rgba(201,168,76,.3)",
+    },
+    {
+      cat: L("santé · projet de fin de licence", "healthcare · final-year bachelor's project"), title: "DispoMed", url: L("dispomed · application mobile", "dispomed · mobile app"),
+      live: "https://www.tiktok.com/@jean_emmvnuel667/photo/7629460772871015701", img: "assets/projects/dispomed.jpg",
+      linkLabel: L("Voir la présentation sur TikTok", "See the showcase on TikTok"),
+      desc: L("Application mobile pour trouver un médicament près de chez soi : disponibilité en temps réel dans les pharmacies de Côte d'Ivoire, pharmacies de garde sur carte et reçus liés à un code patient.",
+        "Mobile app to find a medicine nearby: real-time availability in pharmacies across Côte d'Ivoire, on-call pharmacies on a map and receipts linked to a patient code."),
+      tags: ["React Native", "PostgreSQL", "NestJS", "Prisma", "Supabase"], glow: "rgba(16,185,129,.3)",
     },
     {
       cat: L("iot · club robotique iua", "iot · iua robotics club"), title: L("RFID Pointage", "RFID Attendance"), url: "rfid.iua.local/api",
-      desc: L("Système de pointage RFID en temps réel : API REST sécurisée, architecture évolutive pour des équipements Arduino, traçabilité de chaque opération.",
-        "Real-time RFID attendance system: secure REST API, scalable architecture for Arduino devices, full traceability of every operation."),
+      desc: L("Un badge passé devant un lecteur Arduino enregistre l'entrée du membre en temps réel. Chaque pointage est tracé et consultable sur un tableau de bord.",
+        "Tapping a badge on an Arduino reader logs the member's arrival in real time. Every check-in is recorded and viewable on a dashboard."),
       tags: ["Node.js", "Express", "Arduino", "RFID", L("Temps réel", "Real-time")], glow: "rgba(62,224,143,.25)",
       kpi: "Live", kpiLabel: "badge → API → dashboard",
       req: `<span class="m">POST</span> <span class="u">/api/pointages</span>
@@ -606,8 +607,8 @@
     },
     {
       cat: L("entreprise · djoumaf côte d'ivoire", "company · djoumaf côte d'ivoire"), title: "Djoumaf Auth", url: "auth.djoumaf.ci",
-      desc: L("Mise en place d'un système d'authentification robuste et optimisation des échanges entre front et back pour réduire la latence et améliorer l'expérience utilisateur.",
-        "Built a robust authentication system and optimized front-end/back-end communication to reduce latency and improve the user experience."),
+      desc: L("Authentification à jetons d'accès courts, rafraîchis via un cookie HttpOnly sécurisé, et allègement des échanges entre front et back pour réduire la latence.",
+        "Authentication with short-lived access tokens, refreshed through a secure HttpOnly cookie, plus leaner front-end/back-end exchanges to reduce latency."),
       tags: ["Node.js", "JWT", "Refresh tokens", L("Sécurité", "Security"), "Perf"], glow: "rgba(124,196,255,.25)",
       kpi: "Auth", kpiLabel: L("tokens courts, refresh sécurisé", "short-lived tokens, secure refresh"),
       req: `<span class="m">POST</span> <span class="u">/auth/refresh</span>
@@ -623,6 +624,9 @@
   (function projects() {
     const stack = $("#projStack");
     $("#projTotal").textContent = String(PROJECTS.length).padStart(2, "0");
+    // tuile « En chiffres » de la section À propos : toujours à jour avec la liste
+    $$(".js-stat-projects").forEach((el) => (el.textContent = PROJECTS.length));
+    $$(".js-stat-live").forEach((el) => (el.textContent = PROJECTS.filter((x) => x.live).length));
     stack.innerHTML = PROJECTS.map((p) => `
       <article class="p-card" style="--glow:${p.glow}">
         <div class="p-card__bar"><span class="dots"><i></i><i></i><i></i></span><span class="p-card__url mono">${p.url}</span></div>
@@ -638,10 +642,10 @@
         </div>`}
         <div class="p-card__info">
           <span class="p-card__cat mono">${p.cat}</span>
-          <h3>${p.title}${p.wip ? ` <span class="badge badge--run"><i class="spin" aria-hidden="true"></i>${L("En cours", "In progress")}</span>` : ""}</h3>
+          <h3>${p.title}${p.collab ? ` <span class="badge badge--collab"><svg width="13" height="13" aria-hidden="true"><use href="#i-team"/></svg>${L("En collaboration", "Collaborative project")}</span>` : ""}${p.wip ? ` <span class="badge badge--run"><i class="spin" aria-hidden="true"></i>${L("En cours", "In progress")}</span>` : ""}</h3>
           <p>${p.desc}</p>
           <ul class="tags">${p.tags.map((t) => `<li>${t}</li>`).join("")}</ul>
-          ${p.live ? `<a class="p-card__visit" href="${p.live}" target="_blank" rel="noopener">${L("Voir le site en ligne", "Visit the live site")} <svg width="14" height="14" aria-hidden="true"><use href="#i-arrow"/></svg></a>` : ""}
+          ${p.live ? `<a class="p-card__visit" href="${p.live}" target="_blank" rel="noopener">${p.linkLabel || L("Voir le site en ligne", "Visit the live site")} <svg width="14" height="14" aria-hidden="true"><use href="#i-arrow"/></svg></a>` : ""}
         </div>
       </article>`).join("");
 
