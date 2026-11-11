@@ -561,6 +561,13 @@
       tags: ["React JS", "Next.js", "PostgreSQL"], glow: "rgba(152, 16, 230,.3)",
     },
     {
+      cat: L("éducation · apprentissage de java", "education · learning java"), title: "Java Quest", url: "java-quest-tan.vercel.app",
+      live: "https://java-quest-tan.vercel.app/", img: "assets/projects/java-quest.jpg",
+      desc: L("Jeu pour apprendre Java en codant : 48 niveaux organisés en missions, où l'on écrit du vrai code Java exécuté pas à pas dans le navigateur, avec un résultat visuel à chaque étape.",
+        "Game for learning Java by coding: 48 levels grouped into missions, where you write real Java code that runs step by step in the browser, with visual feedback at each step."),
+      tags: ["React JS"], glow: "rgba(59,130,246,.3)",
+    },
+    {
       cat: L("cryptographie · chiffrement aes", "cryptography · aes encryption"), title: L("AES Chiffrement", "AES Encryption"), url: "aes-test.netlify.app",
       live: "https://aes-test.netlify.app/", img: "assets/projects/aes.jpg",
       desc: L("Site qui chiffre et déchiffre un message à partir d'une clé secrète, avec l'algorithme de chiffrement symétrique AES.",
