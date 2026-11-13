@@ -556,8 +556,8 @@
     {
       cat: L("réseau social · humour ivoirien", "social network · Ivorian humor"), title: "On Bade", url: "onbade.vercel.app",
       live: "https://onbade.vercel.app/", img: "assets/projects/onbade.jpg", collab: true,
-      desc: L("Réseau social installable (PWA) pour raconter ses galères du quotidien en mode bading : publication anonyme, rires, rebades et partage WhatsApp.",
-        "Installable social web app (PWA) for sharing everyday mishaps, Ivorian style: anonymous posting, laughs, reposts and WhatsApp sharing."),
+      desc: L("Réseau social installable (PWA) pour raconter ses galères du quotidien en mode bading : publications avec images et stickers, likes, commentaires, rebades et publication anonyme.",
+        "Installable social web app (PWA) for sharing everyday mishaps, Ivorian style: posts with images and stickers, likes, comments, rebades (reposts) and anonymous posting."),
       tags: ["React JS", "Next.js", "PostgreSQL"], glow: "rgba(152, 16, 230,.3)",
     },
     {
