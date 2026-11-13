@@ -554,8 +554,8 @@
      Sans `img`, la carte affiche « Aperçu à venir » jusqu'à ce que la capture soit ajoutée. */
   const PROJECTS = [
     {
-      cat: L("réseau social · humour ivoirien", "social network · Ivorian humor"), title: "On Bade", url: "jebade.vercel.app",
-      live: "https://jebade.vercel.app/", img: "assets/projects/onbade.jpg", wip: true, collab: true,
+      cat: L("réseau social · humour ivoirien", "social network · Ivorian humor"), title: "On Bade", url: "onbade.vercel.app",
+      live: "https://onbade.vercel.app/", img: "assets/projects/onbade.jpg", collab: true,
       desc: L("Réseau social installable (PWA) pour raconter ses galères du quotidien en mode bading : publication anonyme, rires, rebades et partage WhatsApp.",
         "Installable social web app (PWA) for sharing everyday mishaps, Ivorian style: anonymous posting, laughs, reposts and WhatsApp sharing."),
       tags: ["React JS", "Next.js", "PostgreSQL"], glow: "rgba(152, 16, 230,.3)",
