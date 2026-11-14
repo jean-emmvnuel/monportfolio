@@ -101,7 +101,7 @@
     "journey.e2.head": "<h4>Bachelor's Degree in Computer Engineering</h4><time>2023 – 2026</time>",
     "journey.e2.org": "Institut Universitaire d'Abidjan (IUA)",
     "journey.e2.p": "<span class=\"pill-hl\">Graduated with highest honors</span>",
-    "journey.e3.head": "<h4>Baccalaureate (high school diploma)</h4><time>2020 – 2023</time>",
+    "journey.e3.head": "<h4>Baccalaureate, Series D (math &amp; life sciences)</h4><time>2020 – 2023</time>",
 
     /* certificates */
     "certs.title": "My <em>certificates</em>",
