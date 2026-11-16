@@ -559,6 +559,12 @@
       desc: L("Réseau social installable (PWA) pour raconter ses galères du quotidien en mode bading : publications avec images et stickers, likes, commentaires, rebades et publication anonyme.",
         "Installable social web app (PWA) for sharing everyday mishaps, Ivorian style: posts with images and stickers, likes, comments, rebades (reposts) and anonymous posting."),
       tags: ["React JS", "Next.js", "PostgreSQL", "Resend"], glow: "rgba(152, 16, 230,.3)",
+      roles: [
+        L("L'interface : fil d'actualité, publications avec images et stickers, likes et commentaires.", "The interface: feed, posts with images and stickers, likes and comments."),
+        L("Le framework full-stack : rendu des pages, routes API côté serveur et version installable (PWA).", "The full-stack framework: page rendering, server-side API routes and the installable app (PWA)."),
+        L("La base de données : comptes, publications, likes, commentaires et rebades.", "The database: accounts, posts, likes, comments and rebades."),
+        L("L'envoi des e-mails de l'application.", "Sending the app's e-mails."),
+      ],
     },
     {
       cat: L("éducation · apprentissage de java", "education · learning java"), title: "Java Quest", url: "java-quest-tan.vercel.app",
@@ -566,6 +572,9 @@
       desc: L("Jeu pour apprendre Java en codant : 48 niveaux organisés en missions, où l'on écrit du vrai code Java exécuté pas à pas dans le navigateur, avec un résultat visuel à chaque étape.",
         "Game for learning Java by coding: 48 levels grouped into missions, where you write real Java code that runs step by step in the browser, with visual feedback at each step."),
       tags: ["React JS"], glow: "rgba(59,130,246,.3)",
+      roles: [
+        L("Tout le jeu : éditeur de code, missions et niveaux, exécution du code Java pas à pas avec son rendu visuel.", "The whole game: code editor, missions and levels, step-by-step execution of the Java code with its visual output."),
+      ],
     },
     {
       cat: L("cryptographie · chiffrement aes", "cryptography · aes encryption"), title: L("AES Chiffrement", "AES Encryption"), url: "aes-test.netlify.app",
@@ -573,6 +582,9 @@
       desc: L("Site qui chiffre et déchiffre un message à partir d'une clé secrète, avec l'algorithme de chiffrement symétrique AES.",
         "Web app that encrypts and decrypts a message with a secret key, using the AES symmetric encryption algorithm."),
       tags: ["React JS"], glow: "rgba(152, 16, 230,.3)",
+      roles: [
+        L("L'interface et la logique : saisie du message et de la clé, chiffrement et déchiffrement AES directement dans le navigateur.", "The interface and the logic: entering the message and key, AES encryption and decryption right in the browser."),
+      ],
     },
     {
       cat: L("plateforme · département informatique iua", "platform · iua computer science department"), title: L("Cours IUA", "IUA Courses"), url: "cours-redis-iua.netlify.app",
@@ -580,6 +592,10 @@
       desc: L("Plateforme qui centralise les PDF de cours du département informatique de l'IUA, classés par niveau et par filière.",
         "Platform that centralizes course PDFs for the IUA computer science department, organized by year and program."),
       tags: ["React JS", "Supabase (PostgreSQL)"], glow: "rgba(220,56,45,.3)",
+      roles: [
+        L("L'interface : navigation par niveau et par filière, recherche et ouverture des PDF.", "The interface: browsing by year and program, searching and opening the PDFs."),
+        L("Le backend hébergé : base de données des cours, classés par niveau et par filière.", "The hosted backend: the course database, organized by year and program."),
+      ],
     },
     {
       cat: L("événementiel · billetterie", "events · ticketing"), title: "Verif Ticket", url: "verif-ticket.netlify.app",
@@ -587,6 +603,13 @@
       desc: L("Système de gestion et de vérification des tickets de l'événement La Nuit de l'Aura, avec un espace protégé par authentification.",
         "Ticket management and verification system for the La Nuit de l'Aura event, with an authentication-protected workspace."),
       tags: ["React JS", "Supabase", "PostgreSQL", "Prisma", "NestJS"], glow: "rgba(201,168,76,.3)",
+      roles: [
+        L("L'interface : gestion des tickets, vérification à l'entrée et espace connecté.", "The interface: ticket management, check-in at the door and the signed-in workspace."),
+        L("L'hébergement de la base PostgreSQL.", "Hosting for the PostgreSQL database."),
+        L("La base de données : tickets, statut de validation et comptes.", "The database: tickets, validation status and accounts."),
+        L("L'ORM : schéma des données et requêtes typées vers PostgreSQL.", "The ORM: data schema and type-safe queries to PostgreSQL."),
+        L("L'API : création et validation des tickets, authentification et protection des routes.", "The API: creating and validating tickets, authentication and route protection."),
+      ],
     },
     {
       cat: L("santé · projet de fin de licence", "healthcare · final-year bachelor's project"), title: "DispoMed", url: L("dispomed · application mobile", "dispomed · mobile app"),
@@ -595,12 +618,26 @@
       desc: L("Application mobile pour trouver un médicament près de chez soi : disponibilité en temps réel dans les pharmacies de Côte d'Ivoire, pharmacies de garde sur carte et reçus liés à un code patient.",
         "Mobile app to find a medicine nearby: real-time availability in pharmacies across Côte d'Ivoire, on-call pharmacies on a map and receipts linked to a patient code."),
       tags: ["React Native", "PostgreSQL", "NestJS", "Prisma", "Supabase"], glow: "rgba(16,185,129,.3)",
+      roles: [
+        L("L'application mobile : recherche de médicaments, carte des pharmacies de garde et reçus.", "The mobile app: medicine search, map of on-call pharmacies and receipts."),
+        L("La base de données : médicaments, stocks des pharmacies, gardes et codes patients.", "The database: medicines, pharmacy stock, on-call schedules and patient codes."),
+        L("L'API REST : disponibilités en temps réel, pharmacies, reçus et authentification.", "The REST API: real-time availability, pharmacies, receipts and authentication."),
+        L("L'ORM : schéma des données et requêtes typées vers PostgreSQL.", "The ORM: data schema and type-safe queries to PostgreSQL."),
+        L("L'hébergement de la base PostgreSQL.", "Hosting for the PostgreSQL database."),
+      ],
     },
     {
       cat: L("iot · club robotique iua", "iot · iua robotics club"), title: L("RFID Pointage", "RFID Attendance"), url: "rfid.iua.local/api",
       desc: L("Un badge passé devant un lecteur Arduino enregistre l'entrée du membre en temps réel. Chaque pointage est tracé et consultable sur un tableau de bord.",
         "Tapping a badge on an Arduino reader logs the member's arrival in real time. Every check-in is recorded and viewable on a dashboard."),
       tags: ["Node.js", "Express", "Arduino", "RFID", L("Temps réel", "Real-time")], glow: "rgba(62,224,143,.25)",
+      roles: [
+        L("Le serveur qui reçoit les pointages et les enregistre.", "The server that receives and stores each check-in."),
+        L("Les routes de l'API REST appelées par les lecteurs.", "The REST API routes called by the readers."),
+        L("Le lecteur : lit le badge et envoie son identifiant à l'API.", "The reader: scans the badge and sends its ID to the API."),
+        L("L'identification sans contact de chaque membre par son badge.", "Contactless identification of each member by their badge."),
+        L("La mise à jour immédiate du tableau de bord à chaque passage.", "Instant dashboard updates on every check-in."),
+      ],
       kpi: "Live", kpiLabel: "badge → API → dashboard",
       req: `<span class="m">POST</span> <span class="u">/api/pointages</span>
 <span class="h">X-Device: arduino-uno-07</span>
@@ -617,6 +654,13 @@
       desc: L("Authentification à jetons d'accès courts, rafraîchis via un cookie HttpOnly sécurisé, et allègement des échanges entre front et back pour réduire la latence.",
         "Authentication with short-lived access tokens, refreshed through a secure HttpOnly cookie, plus leaner front-end/back-end exchanges to reduce latency."),
       tags: ["Node.js", "JWT", "Refresh tokens", L("Sécurité", "Security"), "Perf"], glow: "rgba(124,196,255,.25)",
+      roles: [
+        L("Le serveur d'authentification et de gestion des sessions.", "The authentication and session server."),
+        L("Des jetons d'accès courts, signés, pour chaque requête.", "Short-lived signed access tokens for every request."),
+        L("Le renouvellement de session via un cookie HttpOnly sécurisé.", "Session renewal through a secure HttpOnly cookie."),
+        L("Le contrôle d'accès et la protection contre le vol de session.", "Access control and protection against session hijacking."),
+        L("Des échanges allégés entre front et back pour réduire la latence.", "Leaner front-end/back-end exchanges to reduce latency."),
+      ],
       kpi: "Auth", kpiLabel: L("tokens courts, refresh sécurisé", "short-lived tokens, secure refresh"),
       req: `<span class="m">POST</span> <span class="u">/auth/refresh</span>
 <span class="h">Cookie: rt=••••••; HttpOnly; Secure</span>
@@ -634,9 +678,14 @@
     // tuile « En chiffres » de la section À propos : toujours à jour avec la liste
     $$(".js-stat-projects").forEach((el) => (el.textContent = PROJECTS.length));
     $$(".js-stat-live").forEach((el) => (el.textContent = PROJECTS.filter((x) => x.live).length));
+    const FLIP_ICO = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15.5-6.2L21 8M21 3v5h-5M21 12a9 9 0 0 1-15.5 6.2L3 16M3 21v-5h5"/></svg>`;
+    const visit = (p) => p.live ? `<a class="p-card__visit" href="${p.live}" target="_blank" rel="noopener">${p.linkLabel || L("Voir le site en ligne", "Visit the live site")} <svg width="14" height="14" aria-hidden="true"><use href="#i-arrow"/></svg></a>` : "";
     stack.innerHTML = PROJECTS.map((p) => `
       <article class="p-card" style="--glow:${p.glow}">
-        <div class="p-card__bar"><span class="dots"><i></i><i></i><i></i></span><span class="p-card__url mono">${p.url}</span></div>
+       <div class="p-card__flip">
+       <div class="p-card__face p-card__front">
+        <div class="p-card__bar"><span class="dots"><i></i><i></i><i></i></span><span class="p-card__url mono">${p.url}</span>
+          <button type="button" class="p-card__flipbtn" data-flip aria-label="${L("Voir le rôle de chaque techno", "See what each technology does")}">${FLIP_ICO}${L("Technos", "Stack")}</button></div>
         ${p.live ? `
         <div class="p-card__shot">
           ${p.img
@@ -652,19 +701,41 @@
           <h3>${p.title}${p.collab ? ` <span class="badge badge--collab"><svg width="13" height="13" aria-hidden="true"><use href="#i-team"/></svg>${L("En collaboration", "Collaborative project")}</span>` : ""}${p.wip ? ` <span class="badge badge--run"><i class="spin" aria-hidden="true"></i>${L("En cours", "In progress")}</span>` : ""}</h3>
           <p>${p.desc}</p>
           <ul class="tags">${p.tags.map((t) => `<li>${t}</li>`).join("")}</ul>
-          ${p.live ? `<a class="p-card__visit" href="${p.live}" target="_blank" rel="noopener">${p.linkLabel || L("Voir le site en ligne", "Visit the live site")} <svg width="14" height="14" aria-hidden="true"><use href="#i-arrow"/></svg></a>` : ""}
+          ${visit(p)}
         </div>
+       </div>
+       <div class="p-card__face p-card__back" inert aria-hidden="true">
+        <div class="p-card__bar"><span class="dots"><i></i><i></i><i></i></span><span class="p-card__url mono">${p.title} · ${L("sous le capot", "under the hood")}</span>
+          <button type="button" class="p-card__flipbtn" data-flip aria-label="${L("Revenir à l'aperçu du projet", "Back to the project preview")}">${FLIP_ICO}${L("Retour", "Back")}</button></div>
+        <div class="p-card__roles">
+          <span class="p-card__cat mono">${L("le rôle de chaque techno", "what each technology does")}</span>
+          <h3>${p.title}</h3>
+          <ul class="roles">${p.tags.map((t, i) => `<li><span class="roles__name">${t}</span><span class="roles__txt">${p.roles?.[i] || ""}</span></li>`).join("")}</ul>
+          ${visit(p)}
+        </div>
+       </div>
+       </div>
       </article>`).join("");
 
-    decorateTech($$(".tags li", stack));
+    decorateTech($$(".tags li, .roles__name", stack));
     let cards = $$(".p-card", stack);
     let order = cards.map((_, i) => i); // order[0] = front card index
     let animating = false;
+    // recto / verso : survol (souris) ou bouton « Technos » (tactile, clavier)
+    const flip = (card, on, focus) => {
+      if (card.classList.contains("is-flipped") === on) return;
+      card.classList.toggle("is-flipped", on);
+      const [front, back] = $$(".p-card__face", card);
+      front.inert = on; front.setAttribute("aria-hidden", on);
+      back.inert = !on; back.setAttribute("aria-hidden", !on);
+      if (focus) $("[data-flip]", on ? back : front).focus({ preventScroll: true });
+    };
     const pos = (depth) => ({ y: depth * -26, scale: 1 - depth * 0.06, rotate: depth === 0 ? 0 : depth % 2 ? 2.5 : -2.5, zIndex: 10 - depth, opacity: depth > 2 ? 0 : 1, filter: `brightness(${1 - depth * 0.25})` });
     const layout = (instant) => order.forEach((ci, depth) => {
       // only the front card is readable / focusable; the ones behind are decoration
       cards[ci].inert = depth !== 0;
       cards[ci].setAttribute("aria-hidden", depth !== 0);
+      if (depth !== 0) flip(cards[ci], false);
       gsap.to(cards[ci], { ...pos(depth), duration: instant ? 0 : 0.9, ease: "expo.out" });
     });
     layout(true);
@@ -705,7 +776,24 @@
 
     // drag / swipe
     let startX = 0, dragging = false, dx = 0;
-    stack.addEventListener("pointerdown", (e) => { if (animating || e.target.closest("a")) return; dragging = true; startX = e.clientX; dx = 0; stack.setPointerCapture(e.pointerId); });
+    stack.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-flip]");
+      if (!btn) return;
+      const card = btn.closest(".p-card");
+      flip(card, !card.classList.contains("is-flipped"), e.detail === 0);
+    });
+    if (finePointer) {
+      let hoverT;
+      cards.forEach((card) => {
+        card.addEventListener("mouseenter", () => {
+          clearTimeout(hoverT);
+          hoverT = setTimeout(() => { if (!dragging && !animating && card === cards[order[0]]) flip(card, true); }, 180);
+        });
+        card.addEventListener("mouseleave", () => { clearTimeout(hoverT); flip(card, false); });
+      });
+    }
+
+    stack.addEventListener("pointerdown", (e) => { if (animating || e.target.closest("a, button")) return; dragging = true; startX = e.clientX; dx = 0; stack.setPointerCapture(e.pointerId); });
     stack.addEventListener("pointermove", (e) => {
       if (!dragging) return;
       dx = e.clientX - startX;
